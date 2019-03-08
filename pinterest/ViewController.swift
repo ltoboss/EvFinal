@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         
         let pinterestBackground = #imageLiteral(resourceName: "collageBackground")
         let backgroundView = UIImageView(image: pinterestBackground)
-        backgroundView.frame = CGRect(x: 0, y:UIScreen.main.bounds.height * 0.1, width: 400, height: 300)
+        backgroundView.frame = CGRect(x: 0, y:40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.75)
         view.addSubview(backgroundView)
         
         
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true        //constraints
         // constraints for input
         
-        buttonContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60).isActive = true
+        buttonContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 90).isActive = true
         //buttonContainerView.heightAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
         buttonContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         buttonContainerView.heightAnchor.constraint(equalToConstant: 190).isActive = true

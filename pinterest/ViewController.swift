@@ -151,7 +151,13 @@ class ViewController: UIViewController {
     
     
     
-    @objc func handleButton(){
+    @objc func handleButton(_ sender:UIButton){
+        
+        if sender == firstButton {
+            let datosViewC = datosViewController()
+            self.navigationController?.pushViewController(datosViewC, animated: true)
+        }
+        
         
         /*
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {

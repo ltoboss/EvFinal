@@ -21,6 +21,13 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         //let padding1:CGFloat = 10
         
+        let pinterestBackground = #imageLiteral(resourceName: "collageBackground")
+        let backgroundView = UIImageView(image: pinterestBackground)
+        backgroundView.frame = CGRect(x: 0, y:UIScreen.main.bounds.height * 0.1, width: 400, height: 300)
+        view.addSubview(backgroundView)
+        
+        
+        
         //add subview
         view.addSubview(buttonContainerView)
         view.addSubview(firstButton)
@@ -28,7 +35,8 @@ class ViewController: UIViewController {
         buttonContainerView.addSubview(emailButton)
         buttonContainerView.addSubview(facebookButton)
         buttonContainerView.addSubview(googleButton)
-        let pinterestImage = #imageLiteral(resourceName: "pinterest copy")
+        let pinterestImage = #imageLiteral(resourceName: "pinterestLogo")
+        
         //let imagen:UIImageView = pinterestImage
         
         //let imageName = "yourImage.png"
@@ -37,6 +45,7 @@ class ViewController: UIViewController {
         imageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.34, y:UIScreen.main.bounds.height * 0.2, width: 130, height: 130)
         
         view.addSubview(imageView)
+        
         
         //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true        //constraints
         // constraints for input
@@ -81,22 +90,11 @@ class ViewController: UIViewController {
         googleButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         googleButton.layer.cornerRadius = 10
         
-        //googleButton.setLeftPaddingPoints(padding1)//Padding
-        // Do any additional setup after loading the view, typically from a nib.
-        //pinterestImage.draw(at: CGPoint(x: 0, y: 0))
-        
-        //label1.center = CGPoint(x: 0, y: 285)
-        //label1.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
-        //label1.textAlignment = .center
-        //label1.text = "Si continuas aceptas la condiciones del servicio y la politica de privacidad"
-        //self.view.addSubview(label1)
-        
     }
     
     
     //
     let backButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action:#selector(handleButton))
-    
     
     
     let buttonContainerView : UIView =  {

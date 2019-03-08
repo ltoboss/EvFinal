@@ -16,6 +16,13 @@ class datosViewController: UIViewController {
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         //let padding1:CGFloat = 10
         
+        
+        //label1.center = CGPoint(x: 50, y: 50)
+        //label1.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
+        //label1.textAlignment = .center
+        label1.text = "Favor de poner su correo electronico"
+        self.view.addSubview(label1)
+        
         //add subview
         view.addSubview(emailTextField)
         view.addSubview(firstButton)
@@ -24,25 +31,19 @@ class datosViewController: UIViewController {
         
         //constraints
         // constraints for input
-        
-        emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -220).isActive = true
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
         
         
         
-        firstButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 180).isActive = true
+        firstButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 210).isActive = true
         firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         firstButton.leftAnchor.constraint(equalTo: emailTextField.leftAnchor).isActive = true
         firstButton.rightAnchor.constraint(equalTo: emailTextField.rightAnchor).isActive = true
         
         
-        label1.center = CGPoint(x: 0, y: 285)
-        //label1.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
-        label1.textAlignment = .center
-        //label1.text = "Si continuas aceptas la condiciones del servicio y la politica de privacidad"
-        //self.view.addSubview(label1)
         
     }
     
@@ -58,7 +59,7 @@ class datosViewController: UIViewController {
     lazy var firstButton : UIButton = {
         let ub = UIButton()
         ub.backgroundColor = UIColor(red: 219/255, green: 50/255, blue: 54/255, alpha: 1)
-        ub.setTitleColor(.black, for: .normal)
+        ub.setTitleColor(.white, for: .normal)
         ub.setTitle("Siguiente", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
@@ -66,7 +67,7 @@ class datosViewController: UIViewController {
         return ub
     }()
     
-    let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+    let label1 = UILabel(frame: CGRect(x: 10, y: 70, width: 300, height: 21))
     
     
     //Esta funcion la metiste TU

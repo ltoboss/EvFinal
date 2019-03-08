@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 
+var userL:userLocal?
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -154,6 +157,8 @@ class ViewController: UIViewController {
     @objc func handleButton(_ sender:UIButton){
         
         if sender == firstButton {
+            
+            
             let datosViewC = datosViewController()
             self.navigationController?.pushViewController(datosViewC, animated: true)
         }

@@ -72,6 +72,7 @@ class datosViewController: UIViewController {
     
     //Esta funcion la metiste TU
     @objc func handleButton(){
+        userL?.mail = emailTextField.text
         
     }
     

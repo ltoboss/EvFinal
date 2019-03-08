@@ -42,8 +42,7 @@ class datosViewController: UIViewController {
         firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         firstButton.leftAnchor.constraint(equalTo: emailTextField.leftAnchor).isActive = true
         firstButton.rightAnchor.constraint(equalTo: emailTextField.rightAnchor).isActive = true
-        
-        
+        firstButton.layer.cornerRadius = 10
         
     }
     

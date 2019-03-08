@@ -43,9 +43,8 @@ class ViewController: UIViewController {
         //let image = UIImage(named: imageName)
         let imageView = UIImageView(image: pinterestImage)
         imageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.34, y:UIScreen.main.bounds.height * 0.2, width: 130, height: 130)
-        
+        imageView.center = CGPoint(x: UIScreen.main.bounds.width * 0.5, y:UIScreen.main.bounds.height * 0.35)
         view.addSubview(imageView)
-        
         
         //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true        //constraints
         // constraints for input

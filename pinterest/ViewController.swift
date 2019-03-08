@@ -15,83 +15,88 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
-        let padding1:CGFloat = 10
+        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        //let padding1:CGFloat = 10
         
         //add subview
-        view.addSubview(inputContainerView)
+        view.addSubview(buttonContainerView)
         view.addSubview(firstButton)
-        inputContainerView.addSubview(nameTextField)
-        inputContainerView.addSubview(emailTextField)
-        inputContainerView.addSubview(passwordTextField)
         
+        buttonContainerView.addSubview(emailButton)
+        buttonContainerView.addSubview(facebookButton)
+        buttonContainerView.addSubview(googleButton)
+        let pinterestImage = #imageLiteral(resourceName: "pinterest copy")
+        //let imagen:UIImageView = pinterestImage
         
-        //constraints
+        //let imageName = "yourImage.png"
+        //let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: pinterestImage)
+        imageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.34, y:UIScreen.main.bounds.height * 0.2, width: 130, height: 130)
+        
+        view.addSubview(imageView)
+        
+        //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true        //constraints
         // constraints for input
         
-        inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        inputContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
+        buttonContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60).isActive = true
+        //buttonContainerView.heightAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
+        buttonContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        buttonContainerView.heightAnchor.constraint(equalToConstant: 190).isActive = true
+        buttonContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
         
         
-        
-        firstButton.topAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: 20).isActive = true
+        firstButton.topAnchor.constraint(equalTo: buttonContainerView.bottomAnchor, constant: 70).isActive = true
         firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        firstButton.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor).isActive = true
-        firstButton.rightAnchor.constraint(equalTo: inputContainerView.rightAnchor).isActive = true
-        
-        nameTextField.topAnchor.constraint(equalTo: inputContainerView.topAnchor).isActive = true
-        nameTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        nameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true
-        nameTextField.setLeftPaddingPoints(padding1)//Padding
+        firstButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
+        firstButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
+        firstButton.layer.cornerRadius = 10
         
         
-        emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
-        emailTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true
-        emailTextField.setLeftPaddingPoints(padding1)//Padding
+        emailButton.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: -10).isActive = true
+        emailButton.widthAnchor.constraint(equalTo: buttonContainerView.widthAnchor).isActive = true
+        emailButton.heightAnchor.constraint(equalTo: buttonContainerView.heightAnchor, multiplier: 1/3).isActive = true
+        emailButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
+        emailButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
+        emailButton.layer.cornerRadius = 10
         
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
-        passwordTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
-        passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true
-        passwordTextField.setLeftPaddingPoints(padding1)//Padding
+        
+        facebookButton.topAnchor.constraint(equalTo: emailButton.bottomAnchor, constant: 10).isActive = true
+        facebookButton.widthAnchor.constraint(equalTo: buttonContainerView.widthAnchor).isActive = true
+        facebookButton.heightAnchor.constraint(equalTo: buttonContainerView.heightAnchor, multiplier: 1/3).isActive = true
+        //facebookButton.setLeftPaddingPoints(padding1)//Padding
+        facebookButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
+        facebookButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
+        facebookButton.layer.cornerRadius = 10
+        //facebookButton.isHidden = true
+        
+        
+        googleButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 10).isActive = true
+        googleButton.widthAnchor.constraint(equalTo: buttonContainerView.widthAnchor).isActive = true
+        googleButton.heightAnchor.constraint(equalTo: buttonContainerView.heightAnchor, multiplier: 1/3).isActive = true
+        
+        googleButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
+        googleButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
+        googleButton.layer.cornerRadius = 10
+        
+        //googleButton.setLeftPaddingPoints(padding1)//Padding
         // Do any additional setup after loading the view, typically from a nib.
+        //pinterestImage.draw(at: CGPoint(x: 0, y: 0))
         
-        
+        //label1.center = CGPoint(x: 0, y: 285)
+        //label1.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
+        //label1.textAlignment = .center
+        //label1.text = "Si continuas aceptas la condiciones del servicio y la politica de privacidad"
+        //self.view.addSubview(label1)
         
     }
     
     
     //
+    let backButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action:#selector(handleButton))
     
     
-    let emailTextField : UITextField = {
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Email"
-        tf.backgroundColor = .white
-        return tf
-    }()
     
-    let passwordTextField : UITextField = {
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Password"
-        tf.backgroundColor = .white
-        tf.isSecureTextEntry = true
-        return tf
-    }()
-    
-    let nameTextField : UITextField = {
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Name"
-        tf.backgroundColor = .white
-        return tf
-    }()
-    
-    let inputContainerView : UIView =  {
+    let buttonContainerView : UIView =  {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
@@ -100,25 +105,55 @@ class ViewController: UIViewController {
         return view
     }()
     
-    lazy var firstButton : UIButton = {
+    lazy var emailButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
-        ub.setTitle("Register", for: .normal)
+        ub.backgroundColor = UIColor(red: 255/255, green: 20/255, blue: 0/255, alpha: 1)
+        ub.setTitle("Continuar con el correo electronico", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
         ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)//Esta linea la metiste TU
         return ub
     }()
     
-    /*
-     //Estafuncion la metiste TU
-     @objc func handleButton(){
-     print("El nombre es: \(nameTextField.text)")
-     print("El correo es: \(emailTextField.text)")
-     print("El contrasena es: \(passwordTextField.text)")    }*/
+    lazy var facebookButton : UIButton = {
+        let ub = UIButton()
+        ub.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.setTitle("Continuar con Facebook", for: .normal)
+        ub.translatesAutoresizingMaskIntoConstraints = false
+        //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)//Esta linea la metiste TU
+        return ub
+    }()
+    
+    lazy var googleButton : UIButton = {
+        let ub = UIButton()
+        ub.backgroundColor = UIColor(red: 30/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.setTitle("Continuar con Google", for: .normal)
+        ub.translatesAutoresizingMaskIntoConstraints = false
+        //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
+        //Esta linea la metiste TU
+        return ub
+    }()
+    
+    lazy var firstButton : UIButton = {
+        let ub = UIButton()
+        ub.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
+        ub.setTitleColor(.white, for: .normal)
+        ub.setTitle("Iniciar sesion", for: .normal)
+        ub.translatesAutoresizingMaskIntoConstraints = false
+        //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)//Esta linea la metiste TU
+        return ub
+    }()
+    
+    //let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+    
     
     
     @objc func handleButton(){
+        
+        /*
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
             print("Not valid")
             return
@@ -165,7 +200,7 @@ class ViewController: UIViewController {
             print("El correo es: \(self.emailTextField.text)")
             print("El contrasena es: \(self.passwordTextField.text)")
             
-        }
+        }*/
     }
     
     //

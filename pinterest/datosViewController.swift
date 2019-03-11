@@ -16,17 +16,22 @@ class datosViewController: UIViewController {
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         //let padding1:CGFloat = 10
         
+        // ------ Determinar que textos se mostraran --------
+        switch signInScreen {
+        case 1: label1.text = "Favor de poner su password"
+        case 2: label1.text = "Favor de poner su edad"
+        default: label1.text = "Favor de poner su correo electronico"
+        }
         
         //label1.center = CGPoint(x: 50, y: 50)
         //label1.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
         //label1.textAlignment = .center
-        label1.text = "Favor de poner su correo electronico"
-        self.view.addSubview(label1)
+        
         
         //add subview
+        self.view.addSubview(label1)
         view.addSubview(emailTextField)
         view.addSubview(firstButton)
-        
         
         
         //constraints
@@ -50,7 +55,11 @@ class datosViewController: UIViewController {
     let emailTextField : UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Correo"
+        switch signInScreen {
+        case 1:tf.placeholder = "Password"
+        case 2:tf.placeholder = "Edad"
+        default:tf.placeholder = "Correo"
+        }
         tf.backgroundColor = .white
         return tf
     }()
@@ -71,9 +80,32 @@ class datosViewController: UIViewController {
     
     //Esta funcion la metiste TU
     @objc func handleButton(){
-        userL?.mail = emailTextField.text
+        switch signInScreen {
+        case 1:
+            userL?.password = emailTextField.text
+            signInScreen = 2
+            
+            let datosViewC = datosViewController()
+            self.navigationController?.pushViewController(datosViewC, animated: true)
+            
+        case 2:
+            userL?.age = emailTextField.text
+            print(userL?.mail)
+            print(userL?.password)
+            print(userL?.age)
+        default:
+            userL?.mail = emailTextField.text
+            signInScreen = 1
+            
+            let datosViewC = datosViewController()
+            self.navigationController?.pushViewController(datosViewC, animated: true)
+        }
+        
+        //userL?.mail = emailTextField.text
         
     }
+    
+    
     
     /*
      @objc func handleButton(){

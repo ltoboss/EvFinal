@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 var userL:userLocal?
+var signInScreen:Int = 0
 
 
 class ViewController: UIViewController {
@@ -155,7 +156,7 @@ class ViewController: UIViewController {
         
         if sender == firstButton {
             
-            
+            signInScreen = 0
             let datosViewC = datosViewController()
             self.navigationController?.pushViewController(datosViewC, animated: true)
         }

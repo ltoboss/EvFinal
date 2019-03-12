@@ -56,7 +56,9 @@ class datosViewController: UIViewController {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         switch signInScreen {
-        case 1:tf.placeholder = "Password"
+        case 1:
+            tf.placeholder = "Password"
+            tf.isSecureTextEntry = true
         case 2:tf.placeholder = "Edad"
         default:tf.placeholder = "Correo"
         }
@@ -102,14 +104,14 @@ class datosViewController: UIViewController {
                 
                 var user2 = user?.user
                 if error != nil {
-                    self.firstButton.setTitle(error?.localizedDescription, for: .normal)
+                    //self.firstButton.setTitle(error?.localizedDescription, for: .normal)
                     //rint(error)
                     return
                 }
                 
                 //self.firstButton.setTitle("paso 2", for: .normal)
                 guard let uid = user2?.uid else {
-                    self.firstButton.setTitle("algo salio mal", for: .normal)
+                    //self.firstButton.setTitle("algo salio mal", for: .normal)
                     return
                 }
                 
@@ -120,7 +122,7 @@ class datosViewController: UIViewController {
                 //self.firstButton.setTitle("paso 3", for: .normal)
                 usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
                     if  error != nil {
-                        self.firstButton.setTitle("esto salio muy mal", for: .normal)
+                        //self.firstButton.setTitle("esto salio muy mal", for: .normal)
                         print(error)
                     }
                 })
@@ -133,7 +135,7 @@ class datosViewController: UIViewController {
                 
                 
                 // successfully included
-                self.firstButton.setTitle("Saved", for: .normal)
+                //self.firstButton.setTitle("Saved", for: .normal)
                 
                 
             }

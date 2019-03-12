@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-var userL:userLocal?
+var userL:userLocal = userLocal()
 var signInScreen:Int = 0
 
 

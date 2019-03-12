@@ -9,9 +9,9 @@
 import Foundation
 
 class userLocal {
-    var mail:String? = nil
-    var password:String? = nil
-    var age:String? = nil
+    var mail:String? = "nil"
+    var password:String? = "nil"
+    var age:String? = "nil"
     
     
 }

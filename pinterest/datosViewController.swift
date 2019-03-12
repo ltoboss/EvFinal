@@ -19,9 +19,9 @@ class datosViewController: UIViewController {
         
         // ------ Determinar que textos se mostraran --------
         switch signInScreen {
-        case 1: label1.text = "Favor de poner su password"
-        case 2: label1.text = "Favor de poner su edad"
-        default: label1.text = "Favor de poner su correo electronico"
+            case 1: label1.text = "Favor de poner su password"
+            case 2: label1.text = "Favor de poner su edad"
+            default: label1.text = "Favor de poner su correo electronico"
         }
         
         //label1.center = CGPoint(x: 50, y: 50)
@@ -79,6 +79,19 @@ class datosViewController: UIViewController {
     
     let label1 = UILabel(frame: CGRect(x: 10, y: 70, width: 300, height: 21))
     
+    //------------------- FUNCIONES -----------------
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            switch signInScreen {
+                case 1: signInScreen = 0
+                case 2: signInScreen = 1
+                default: signInScreen = 0
+            }
+            
+        }
+    }
     
     //Esta funcion la metiste TU
     @objc func handleButton(){

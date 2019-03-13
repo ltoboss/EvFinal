@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class datosViewController: UIViewController{
+class datosViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,16 @@ class datosViewController: UIViewController{
         switch signInScreen {
             case 1: label1.text = "Favor de poner su password"
             case 2: label1.text = "Favor de poner su edad"
+            /*
+            self.emailTextField.delegate = self
+            func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+                let allowedCharacters = CharacterSet.decimalDigits
+                let characterSet = CharacterSet(charactersIn: string)
+                
+                
+                return allowedCharacters.isSuperset(of: characterSet)
+            }*/
+            
             default: label1.text = "Favor de poner su correo electronico"
         }
         
@@ -82,8 +92,7 @@ class datosViewController: UIViewController{
     
     //------------------- FUNCIONES -----------------
     
-    
-    
+   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         

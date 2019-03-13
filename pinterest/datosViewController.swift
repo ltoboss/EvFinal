@@ -8,10 +8,11 @@
 
 import UIKit
 import Firebase
-class datosViewController: UIViewController {
+class datosViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Registrate"
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         let padding1:CGFloat = 10
@@ -80,6 +81,9 @@ class datosViewController: UIViewController {
     let label1 = UILabel(frame: CGRect(x: 10, y: 70, width: 300, height: 21))
     
     //------------------- FUNCIONES -----------------
+    
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -95,76 +99,66 @@ class datosViewController: UIViewController {
     
     //Esta funcion la metiste TU
     @objc func handleButton(){
-        switch signInScreen {
-        case 1:
-            userL.password = emailTextField.text
-            signInScreen = 2
+        if emailTextField.text != "" {
             
-            let datosViewC = datosViewController()
-            self.navigationController?.pushViewController(datosViewC, animated: true)
-            
-        case 2:
-            userL.age = emailTextField.text
-            //self.firstButton.setTitle(userL.age, for: .normal)
-            guard let email = userL.mail, let password = userL.password, let age = userL.age else {
-                //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
-                return
-            }
-            
-            
-            var data:AuthDataResultCallback
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            switch signInScreen {
+            case 1:
+                userL.password = emailTextField.text
+                signInScreen = 2
+                let datosViewC = datosViewController()
+                self.navigationController?.pushViewController(datosViewC, animated: true)
                 
-                var user2 = user?.user
-                if error != nil {
-                    //self.firstButton.setTitle(error?.localizedDescription, for: .normal)
-                    //rint(error)
+            case 2:
+                userL.age = emailTextField.text
+                //self.firstButton.setTitle(userL.age, for: .normal)
+                guard let email = userL.mail, let password = userL.password, let age = userL.age else {
+                    //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
                     return
                 }
                 
-                //self.firstButton.setTitle("paso 2", for: .normal)
-                guard let uid = user2?.uid else {
-                    //self.firstButton.setTitle("algo salio mal", for: .normal)
-                    return
-                }
                 
-                //sucessfully
-                var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
-                let values = ["age" :age, "email": email]
-                let usersRef = ref.child("users").child(uid)
-                //self.firstButton.setTitle("paso 3", for: .normal)
-                usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
-                    if  error != nil {
-                        //self.firstButton.setTitle("esto salio muy mal", for: .normal)
-                        print(error)
+                var data:AuthDataResultCallback
+                Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                    
+                    var user2 = user?.user
+                    if error != nil {
+                        //self.firstButton.setTitle(error?.localizedDescription, for: .normal)
+                        //rint(error)
+                        return
                     }
-                })
+                    
+                    guard let uid = user2?.uid else {
+                        //self.firstButton.setTitle("algo salio mal", for: .normal)
+                        return
+                    }
+                    
+                    //sucessfully
+                    var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
+                    let values = ["age" :age, "email": email]
+                    let usersRef = ref.child("users").child(uid)
+                    //self.firstButton.setTitle("paso 3", for: .normal)
+                    usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
+                        if  error != nil {
+                            //self.firstButton.setTitle("esto salio muy mal", for: .normal)
+                            print(error)
+                        }
+                    })
+                    
+                    //Incluir mensaje dummy
+                    let mensaje = ["mensaje" : "soy un mensaje dummy", "uid" : uid]
+                    let mensajeRef = ref.child("messages").child(uid)
+                    mensajeRef.updateChildValues(mensaje)
+                }
                 
-                
-                //Incluir mensaje dummy
-                let mensaje = ["mensaje" : "soy un mensaje dummy", "uid" : uid]
-                let mensajeRef = ref.child("messages").child(uid)
-                mensajeRef.updateChildValues(mensaje)
-                
-                
-                // successfully included
-                //self.firstButton.setTitle("Saved", for: .normal)
-                
-                
+            default:
+                userL.mail = emailTextField.text
+                signInScreen = 1
+                let datosViewC = datosViewController()
+                self.navigationController?.pushViewController(datosViewC, animated: true)
             }
             
-            /*print(userL?.mail)
-            print(userL?.password)
-            print(userL?.age)*/
-        default:
-            userL.mail = emailTextField.text
-            signInScreen = 1
-            
-            let datosViewC = datosViewController()
-            self.navigationController?.pushViewController(datosViewC, animated: true)
+            //userL?.mail = emailTextField.text
         }
-        
-        //userL?.mail = emailTextField.text
         
     }
     

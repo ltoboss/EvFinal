@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 class datosViewController: UIViewController, UITextFieldDelegate{
     
-    let typeScreen = signInScreen
+    //let typeScreen = signInScreen
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         
         
         // ------ Determinar que textos se mostraran --------
-        switch typeScreen {
+        switch signInScreen {
             case 1: label1.text = "Favor de poner su password"
             case 2: label1.text = "Favor de poner su edad"
             /*
@@ -112,11 +112,12 @@ class datosViewController: UIViewController, UITextFieldDelegate{
     //Esta funcion la metiste TU
     @objc func handleButton(){
         if emailTextField.text != "" {
-            
-            switch typeScreen {
+            label1.text = "\(signInScreen)"
+            switch signInScreen {
             case 1:
                 userL.password = emailTextField.text
                 signInScreen = 2
+                //signInScreen += 1
                 let datosViewC = datosViewController()
                 
                 
@@ -125,6 +126,8 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                 
             case 2:
                 userL.age = emailTextField.text
+                
+                //signInScreen += 1
                 //self.firstButton.setTitle(userL.age, for: .normal)
                 guard let email = userL.mail, let password = userL.password, let age = userL.age else {
                     //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
@@ -167,7 +170,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                 
             default:
                 userL.mail = emailTextField.text
-                
+                //signInScreen += 1
                 signInScreen = 1
                 
                 let datosViewC = datosViewController()
@@ -203,16 +206,24 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         providersCount = providers.count
                         
                         self.firstButton.setTitle("ocupado", for: .normal)
-                    }
+                    } else {
+                        self.firstButton.setTitle("libre", for: .normal)                    }
                     
                     
                     
                     
                 })  //final de checar
+                /*
+                if providersCount == 0 {
+                    label1.text = "no hay nada en la lista"
+                    self.firstButton.setTitle("no hay nada en la lista", for: .normal)
+                    
+                } else if providersCount <= 1 {
+                    label1.text = "hay algo en la lista"
+                    self.firstButton.setTitle("hay algo en la lista", for: .normal)
+                } */
                 
-                
-                
-                //self.navigationController?.pushViewController(datosViewC, animated: true)
+                self.navigationController?.pushViewController(datosViewC, animated: true)
                 
                 
                 /*

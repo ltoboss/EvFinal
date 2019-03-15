@@ -23,11 +23,12 @@ class singInViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController {
-            switch signInScreen {
+            signInScreen = 0
+            /*switch signInScreen {
             case 1: signInScreen = 0
             case 2: signInScreen = 1
             default: signInScreen = 0
-            }
+            }*/
             
         }
     }

@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 class datosViewController: UIViewController, UITextFieldDelegate{
     
+    let typeScreen = signInScreen
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,10 +21,11 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         
         
         // ------ Determinar que textos se mostraran --------
-        switch signInScreen {
+        switch typeScreen {
             case 1: label1.text = "Favor de poner su password"
             case 2: label1.text = "Favor de poner su edad"
             /*
+             
             self.emailTextField.delegate = self
             func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
                 let allowedCharacters = CharacterSet.decimalDigits
@@ -110,7 +113,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
     @objc func handleButton(){
         if emailTextField.text != "" {
             
-            switch signInScreen {
+            switch typeScreen {
             case 1:
                 userL.password = emailTextField.text
                 signInScreen = 2
@@ -189,7 +192,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         print(error.localizedDescription)
                         self.label1.text = error.localizedDescription
                         
-                        
+                        self.firstButton.setTitle("disponible", for: .normal)
                         
                         //self.navigationController?.pushViewController(datosViewC, animated: true)
                         
@@ -198,12 +201,8 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         print(providers)
                         
                         providersCount = providers.count
-                        //self.navigationController?.pushViewController(signViewC, animated: true)
-                        //signInScreen = 1
-                        //let signInViewC = singInViewController()
-                        //self.navigationController?.pushViewController(signInViewC, animated: true)
                         
-                        
+                        self.firstButton.setTitle("ocupado", for: .normal)
                     }
                     
                     
@@ -211,11 +210,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     
                 })  //final de checar
                 
-                if providersCount != 0 {
-                    self.navigationController?.pushViewController(signViewC, animated: true)
-                } else {
-                    self.navigationController?.pushViewController(datosViewC, animated: true)
-                }
+                
                 
                 //self.navigationController?.pushViewController(datosViewC, animated: true)
                 

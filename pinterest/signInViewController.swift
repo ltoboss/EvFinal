@@ -56,15 +56,11 @@ class singInViewController: UIViewController {
         ub.setTitleColor(.white, for: .normal)
         ub.setTitle("Siguiente", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
-        //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
-        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)//Esta linea la metiste TU
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
         return ub
     }()
     
     let labelInstruction = UILabel(frame: CGRect(x: 10, y: 70, width: 300, height: 21))
-    
-    
-    
     
     //****************** FUNCIONES *********************
     
@@ -72,7 +68,7 @@ class singInViewController: UIViewController {
     @objc func handleButton(_ sender:UIButton){
         if passwordTextField.text != "" {
             userL?.password = passwordTextField.text
-            signInScreen = 0
+            activeScreen = screens.Mail //Esta seria mas bien preventiva. Checar si afecta
             let datosViewC = datosViewController()
             self.navigationController?.pushViewController(datosViewC, animated: true)
         }
@@ -84,16 +80,8 @@ class singInViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController {
-            signInScreen = 0
-            /*switch signInScreen {
-            case 1: signInScreen = 0
-            case 2: signInScreen = 1
-            default: signInScreen = 0
-            }*/
+            activeScreen = screens.Mail
         }
     }
-    
-    
-    
     
 }

@@ -12,6 +12,4 @@ class userLocal {
     var mail:String? = "nil"
     var password:String? = "nil"
     var age:String? = "nil"
-    
-    
 }

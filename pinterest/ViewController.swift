@@ -11,6 +11,12 @@ import Firebase
 
 var userL:userLocal? //= userLocal()
 var signInScreen:Int = 0
+enum screens:String {
+    case Mail = "correo"
+    case Password = "password"
+    case Age = "edad"
+}
+var activeScreen = screens.Mail
 
 
 class ViewController: UIViewController {
@@ -138,7 +144,7 @@ class ViewController: UIViewController {
     // -------------- Al presionar el boton --------------------
     @objc func handleButton(_ sender:UIButton){
         if sender == firstButton {
-            signInScreen = 0
+            activeScreen = screens.Mail
             let datosViewC = datosViewController()
             self.navigationController?.pushViewController(datosViewC, animated: true)
         }

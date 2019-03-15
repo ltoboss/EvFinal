@@ -10,31 +10,22 @@ import UIKit
 import Firebase
 class datosViewController: UIViewController, UITextFieldDelegate{
     
-    //let typeScreen = signInScreen
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Registrate"
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         let padding1:CGFloat = 10
+        label1.text = "Favor de poner su \(activeScreen.rawValue)"
         
-        
-        // ------ Determinar que textos se mostraran --------
-        switch signInScreen {
-            case 1: label1.text = "Favor de poner su password"
-            case 2: label1.text = "Favor de poner su edad"
-            default: label1.text = "Favor de poner su correo electronico"
-        }
         
         //add subview
         self.view.addSubview(label1)
         view.addSubview(emailTextField)
         view.addSubview(firstButton)
         
-        
+
         //constraints
-        // constraints for input
         emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -220).isActive = true
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -46,20 +37,13 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         firstButton.leftAnchor.constraint(equalTo: emailTextField.leftAnchor).isActive = true
         firstButton.rightAnchor.constraint(equalTo: emailTextField.rightAnchor).isActive = true
         firstButton.layer.cornerRadius = 10
-        
     }
-    
     
     let emailTextField : UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        switch signInScreen {
-        case 1:
-            tf.placeholder = "Password"
-            tf.isSecureTextEntry = true
-        case 2:tf.placeholder = "Edad"
-        default:tf.placeholder = "Correo"
-        }
+        tf.placeholder = activeScreen.rawValue
+        if activeScreen == screens.Password {tf.isSecureTextEntry = true}
         tf.backgroundColor = .white
         return tf
     }()
@@ -70,8 +54,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         ub.setTitleColor(.white, for: .normal)
         ub.setTitle("Siguiente", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
-        //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
-        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)//Esta linea la metiste TU
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
         return ub
     }()
     
@@ -83,109 +66,74 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController {
-            switch signInScreen {
-                case 1: signInScreen = 0
-                case 2: signInScreen = 1
-                default: signInScreen = 0
+            switch activeScreen {
+                case .Mail: activeScreen = screens.Mail
+                case .Password: activeScreen = screens.Mail
+                case .Age: activeScreen = screens.Password //Esta es mas bien preventiva. Sera bueno revisar su comportamiento
             }
-            
         }
     }
     
-    //Esta funcion la metiste TU
+    //---------- Lo que hace el boton al presionarlo ------------------
     @objc func handleButton(){
         if emailTextField.text != "" {
-            //label1.text = "\(signInScreen)"
-            switch signInScreen {
-            case 1:
-                userL?.password = emailTextField.text
-                signInScreen = 2
-                let datosViewC = datosViewController()
+            switch activeScreen { //Inicio de Switch case
+                case .Mail:
+                    userL = userLocal()
+                    userL?.mail = emailTextField.text
                 
-                self.navigationController?.pushViewController(datosViewC, animated: true)
-                
-            case 2:
-                
-                userL?.age = emailTextField.text
-                //userL?.age = "94"
-                guard let email = userL!.mail, let password = userL!.password, let age = userL!.age else {
-                    //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
-                    return
-                }
-                
-                
-                var data:AuthDataResultCallback
-                Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                    let datosViewC = datosViewController()
+                    let signViewC = singInViewController()
                     
-                    var user2 = user?.user
-                    if error != nil {
-                        //self.firstButton.setTitle(error?.localizedDescription, for: .normal)
-                        //print(error)
-                        return
-                    }
-                    
-                    guard let uid = user2?.uid else {
-                        //self.firstButton.setTitle("algo salio mal", for: .normal)
-                        return
-                    }
-                    
-                    //sucessfully
-                    var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
-                    let values = ["age" :age, "email": email]
-                    let usersRef = ref.child("users").child(uid)
-                    
-                    usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
-                        if  error != nil {
-                            self.firstButton.setTitle("esto salio muy mal", for: .normal)
-                            print(error)
+                    Auth.auth().fetchProviders(forEmail: emailTextField.text!, completion: {
+                        (providers, error) in
+                        
+                        if let error = error { print(error.localizedDescription) }
+                        else if let providers = providers {
+                            //print(providers)
+                            print("Ocupado amigo")
+                            self.navigationController?.pushViewController(signViewC, animated: true)
+                        } else {
+                            print("Disponible")
+                            activeScreen = screens.Password
+                            self.navigationController?.pushViewController(datosViewC, animated: true)
                         }
                     })
+                
+                case .Password:
+                    userL?.password = emailTextField.text
+                    activeScreen = screens.Age
+                    let datosViewC = datosViewController()
                     
-                    //Incluir mensaje dummy
-                    let mensaje = ["mensaje" : "soy un mensaje dummy", "uid" : uid]
-                    let mensajeRef = ref.child("messages").child(uid)
-                    mensajeRef.updateChildValues(mensaje)
-                }
+                    self.navigationController?.pushViewController(datosViewC, animated: true)
                 
-                
-                
-            default:
-                userL = userLocal()
-                userL?.mail = emailTextField.text
-                signInScreen = 1
-                
-                let datosViewC = datosViewController()
-                let signViewC = singInViewController()
-                
-                Auth.auth().fetchProviders(forEmail: emailTextField.text!, completion: {
-                    (providers, error) in
+                case .Age:
+                    userL?.age = emailTextField.text
+                    guard let email = userL!.mail, let password = userL!.password, let age = userL!.age else { return }
                     
-                    if let error = error {
-                        print(error.localizedDescription)
-                        //self.label1.text = error.localizedDescription
+                    var data:AuthDataResultCallback
+                    Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                         
-                        //self.firstButton.setTitle("disponible", for: .normal)
+                        var user2 = user?.user
+                        if error != nil { print(error); return }
+                        guard let uid = user2?.uid else { print(); return }
                         
-                        //self.navigationController?.pushViewController(datosViewC, animated: true)
+                        //sucessfully
+                        var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
+                        let values = ["age" :age, "email": email]
+                        let usersRef = ref.child("users").child(uid)
                         
-                    } else if let providers = providers {
-                        print(providers)
-
-                        //self.firstButton.setTitle("ocupado", for: .normal)
+                        usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
+                            if  error != nil { print(error) }
+                        })
                         
-                        self.navigationController?.pushViewController(signViewC, animated: true)
-                        
-                    } else {
-                        //self.firstButton.setTitle("libre", for: .normal)
-                        
-                        self.navigationController?.pushViewController(datosViewC, animated: true)
-                        
+                        //Incluir mensaje dummy
+                        let mensaje = ["mensaje" : "soy un mensaje dummy", "uid" : uid]
+                        let mensajeRef = ref.child("messages").child(uid)
+                        mensajeRef.updateChildValues(mensaje)
                     }
-                    
-                    
-                })
                 
-            }
+            }//Fin de switch case
             
         }
         

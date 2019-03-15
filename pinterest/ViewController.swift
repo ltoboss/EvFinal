@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-var userL:userLocal = userLocal()
+var userL:userLocal? //= userLocal()
 var signInScreen:Int = 0
 
 
@@ -27,8 +27,6 @@ class ViewController: UIViewController {
         backgroundView.frame = CGRect(x: 0, y:40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.75)
         view.addSubview(backgroundView)
         
-        
-        
         //add subview
         view.addSubview(buttonContainerView)
         view.addSubview(firstButton)
@@ -38,17 +36,12 @@ class ViewController: UIViewController {
         buttonContainerView.addSubview(googleButton)
         let pinterestImage = #imageLiteral(resourceName: "pinterestLogo")
         
-        //let imagen:UIImageView = pinterestImage
-        
-        //let imageName = "yourImage.png"
         //let image = UIImage(named: imageName)
         let imageView = UIImageView(image: pinterestImage)
         imageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.34, y:UIScreen.main.bounds.height * 0.2, width: 130, height: 130)
         imageView.center = CGPoint(x: UIScreen.main.bounds.width * 0.5, y:UIScreen.main.bounds.height * 0.35)
         view.addSubview(imageView)
         
-        //imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true        //constraints
-        // constraints for input
         
         buttonContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 90).isActive = true
         //buttonContainerView.heightAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
@@ -56,13 +49,11 @@ class ViewController: UIViewController {
         buttonContainerView.heightAnchor.constraint(equalToConstant: 190).isActive = true
         buttonContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
         
-        
         firstButton.topAnchor.constraint(equalTo: buttonContainerView.bottomAnchor, constant: 70).isActive = true
         firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         firstButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
         firstButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         firstButton.layer.cornerRadius = 10
-        
         
         emailButton.topAnchor.constraint(equalTo: buttonContainerView.topAnchor, constant: -10).isActive = true
         emailButton.widthAnchor.constraint(equalTo: buttonContainerView.widthAnchor).isActive = true
@@ -71,7 +62,6 @@ class ViewController: UIViewController {
         emailButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         emailButton.layer.cornerRadius = 10
         
-        
         facebookButton.topAnchor.constraint(equalTo: emailButton.bottomAnchor, constant: 10).isActive = true
         facebookButton.widthAnchor.constraint(equalTo: buttonContainerView.widthAnchor).isActive = true
         facebookButton.heightAnchor.constraint(equalTo: buttonContainerView.heightAnchor, multiplier: 1/3).isActive = true
@@ -79,23 +69,17 @@ class ViewController: UIViewController {
         facebookButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
         facebookButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         facebookButton.layer.cornerRadius = 10
-        //facebookButton.isHidden = true
-        
         
         googleButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 10).isActive = true
         googleButton.widthAnchor.constraint(equalTo: buttonContainerView.widthAnchor).isActive = true
         googleButton.heightAnchor.constraint(equalTo: buttonContainerView.heightAnchor, multiplier: 1/3).isActive = true
-        
         googleButton.leftAnchor.constraint(equalTo: buttonContainerView.leftAnchor).isActive = true
         googleButton.rightAnchor.constraint(equalTo: buttonContainerView.rightAnchor).isActive = true
         googleButton.layer.cornerRadius = 10
         
     }
     
-    
-    
-    
-    
+    //****************** VARIABLES *********************
     let buttonContainerView : UIView =  {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -149,70 +133,17 @@ class ViewController: UIViewController {
     
     //let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
     
+    //****************** FUNCIONES *********************
     
-    
+    // -------------- Al presionar el boton --------------------
     @objc func handleButton(_ sender:UIButton){
-        
         if sender == firstButton {
-            
             signInScreen = 0
             let datosViewC = datosViewController()
             self.navigationController?.pushViewController(datosViewC, animated: true)
         }
-        
-        
-        /*
-        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
-            print("Not valid")
-            return
-        }
-        
-        
-        var data:AuthDataResultCallback
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            
-            var user2 = user?.user
-            if error != nil {
-                print("ira esto")
-                print(error)
-                return
-            }
-            
-            guard let uid = user2?.uid else {
-                print("algo salio mal")
-                return
-            }
-            
-            //sucessfully
-            var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
-            let values = ["name" :name, "email": email]
-            let usersRef = ref.child("users").child(uid)
-            
-            usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
-                if  error != nil {
-                    print("esto salio muy mal")
-                    print(error)
-                }
-            })
-            
-            
-            //Incluir mensaje dummy
-            let mensaje = ["mensaje" : "soy un mensaje dummy", "uid" : uid]
-            let mensajeRef = ref.child("messages").child(uid)
-            mensajeRef.updateChildValues(mensaje)
-            
-            
-            // successfully included
-            print("Saved user successfully into our database")
-            print("El nombre es: \(self.nameTextField.text)")
-            print("El correo es: \(self.emailTextField.text)")
-            print("El contrasena es: \(self.passwordTextField.text)")
-            
-        }*/
     }
     
-    //
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -222,7 +153,6 @@ class ViewController: UIViewController {
 }
 
 
-//
 extension UIColor {
     
     convenience init(r:CGFloat, g: CGFloat, b: CGFloat) {

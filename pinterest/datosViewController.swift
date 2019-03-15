@@ -98,16 +98,17 @@ class datosViewController: UIViewController, UITextFieldDelegate{
             //label1.text = "\(signInScreen)"
             switch signInScreen {
             case 1:
-                userL.password = emailTextField.text
+                userL?.password = emailTextField.text
                 signInScreen = 2
                 let datosViewC = datosViewController()
                 
                 self.navigationController?.pushViewController(datosViewC, animated: true)
                 
             case 2:
-                userL.age = emailTextField.text
                 
-                guard let email = userL.mail, let password = userL.password, let age = userL.age else {
+                userL?.age = emailTextField.text
+                //userL?.age = "94"
+                guard let email = userL!.mail, let password = userL!.password, let age = userL!.age else {
                     //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
                     return
                 }
@@ -135,7 +136,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     
                     usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
                         if  error != nil {
-                            //self.firstButton.setTitle("esto salio muy mal", for: .normal)
+                            self.firstButton.setTitle("esto salio muy mal", for: .normal)
                             print(error)
                         }
                     })
@@ -146,14 +147,15 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     mensajeRef.updateChildValues(mensaje)
                 }
                 
+                
+                
             default:
-                userL.mail = emailTextField.text
+                userL = userLocal()
+                userL?.mail = emailTextField.text
                 signInScreen = 1
                 
                 let datosViewC = datosViewController()
                 let signViewC = singInViewController()
-                
-                var providersCount = 0
                 
                 Auth.auth().fetchProviders(forEmail: emailTextField.text!, completion: {
                     (providers, error) in

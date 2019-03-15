@@ -31,6 +31,8 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
         emailTextField.setLeftPaddingPoints(padding1)//Padding
+        if activeScreen.rawValue == screens.Password.rawValue {emailTextField.isSecureTextEntry = true}
+        
         
         firstButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 210).isActive = true
         firstButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -43,7 +45,6 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = activeScreen.rawValue
-        if activeScreen == screens.Password {tf.isSecureTextEntry = true}
         tf.backgroundColor = .white
         return tf
     }()

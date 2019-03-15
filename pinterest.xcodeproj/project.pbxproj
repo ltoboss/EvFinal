@@ -17,6 +17,7 @@
 		F34FF5452232096B009FBCD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34FF5432232096B009FBCD2 /* LaunchScreen.storyboard */; };
 		F34FF5502232096B009FBCD2 /* pinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF54F2232096B009FBCD2 /* pinterestTests.swift */; };
 		F34FF55B2232096B009FBCD2 /* pinterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF55A2232096B009FBCD2 /* pinterestUITests.swift */; };
+		F3632FB3223B3B5D0083374B /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3632FB2223B3B5D0083374B /* signInViewController.swift */; };
 		F6906D5AF036644B4D4852E8 /* Pods_pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E65ED5B3EA09CA0C46E3E3 /* Pods_pinterest.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		F34FF5562232096B009FBCD2 /* pinterestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pinterestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34FF55A2232096B009FBCD2 /* pinterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinterestUITests.swift; sourceTree = "<group>"; };
 		F34FF55C2232096B009FBCD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3632FB2223B3B5D0083374B /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				F34FF5412232096B009FBCD2 /* Assets.xcassets */,
 				F34FF5432232096B009FBCD2 /* LaunchScreen.storyboard */,
 				F34FF5462232096B009FBCD2 /* Info.plist */,
+				F3632FB2223B3B5D0083374B /* signInViewController.swift */,
 			);
 			path = pinterest;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F34FF53D2232096B009FBCD2 /* ViewController.swift in Sources */,
 				F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */,
 				55AFC85322323BE9003E01FD /* datosViewController.swift in Sources */,
+				F3632FB3223B3B5D0083374B /* signInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

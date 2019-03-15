@@ -206,8 +206,16 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         providersCount = providers.count
                         
                         self.firstButton.setTitle("ocupado", for: .normal)
+                        
+                        
+                        self.navigationController?.pushViewController(signViewC, animated: true)
+                        
                     } else {
-                        self.firstButton.setTitle("libre", for: .normal)                    }
+                        self.firstButton.setTitle("libre", for: .normal)
+                        
+                        self.navigationController?.pushViewController(datosViewC, animated: true)
+                        
+                    }
                     
                     
                     
@@ -223,7 +231,6 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     self.firstButton.setTitle("hay algo en la lista", for: .normal)
                 } */
                 
-                self.navigationController?.pushViewController(datosViewC, animated: true)
                 
                 
                 /*

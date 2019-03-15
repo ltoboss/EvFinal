@@ -24,24 +24,8 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         switch signInScreen {
             case 1: label1.text = "Favor de poner su password"
             case 2: label1.text = "Favor de poner su edad"
-            /*
-             
-            self.emailTextField.delegate = self
-            func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-                let allowedCharacters = CharacterSet.decimalDigits
-                let characterSet = CharacterSet(charactersIn: string)
-                
-                
-                return allowedCharacters.isSuperset(of: characterSet)
-            }*/
-            
             default: label1.text = "Favor de poner su correo electronico"
         }
-        
-        //label1.center = CGPoint(x: 50, y: 50)
-        //label1.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
-        //label1.textAlignment = .center
-        
         
         //add subview
         self.view.addSubview(label1)
@@ -93,9 +77,8 @@ class datosViewController: UIViewController, UITextFieldDelegate{
     
     let label1 = UILabel(frame: CGRect(x: 10, y: 70, width: 300, height: 21))
     
-    //------------------- FUNCIONES -----------------
     
-   
+    //------------------- FUNCIONES -----------------
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -112,23 +95,18 @@ class datosViewController: UIViewController, UITextFieldDelegate{
     //Esta funcion la metiste TU
     @objc func handleButton(){
         if emailTextField.text != "" {
-            label1.text = "\(signInScreen)"
+            //label1.text = "\(signInScreen)"
             switch signInScreen {
             case 1:
                 userL.password = emailTextField.text
                 signInScreen = 2
-                //signInScreen += 1
                 let datosViewC = datosViewController()
-                
-                
                 
                 self.navigationController?.pushViewController(datosViewC, animated: true)
                 
             case 2:
                 userL.age = emailTextField.text
                 
-                //signInScreen += 1
-                //self.firstButton.setTitle(userL.age, for: .normal)
                 guard let email = userL.mail, let password = userL.password, let age = userL.age else {
                     //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
                     return
@@ -141,7 +119,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     var user2 = user?.user
                     if error != nil {
                         //self.firstButton.setTitle(error?.localizedDescription, for: .normal)
-                        //rint(error)
+                        //print(error)
                         return
                     }
                     
@@ -154,7 +132,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
                     let values = ["age" :age, "email": email]
                     let usersRef = ref.child("users").child(uid)
-                    //self.firstButton.setTitle("paso 3", for: .normal)
+                    
                     usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
                         if  error != nil {
                             //self.firstButton.setTitle("esto salio muy mal", for: .normal)
@@ -170,19 +148,10 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                 
             default:
                 userL.mail = emailTextField.text
-                //signInScreen += 1
                 signInScreen = 1
                 
                 let datosViewC = datosViewController()
                 let signViewC = singInViewController()
-                
-                //aqui empieza
-                /*
-                guard let email = userL.mail, let password = userL.password, let age = userL.age else {
-                    //self.firstButton.setTitle("Not valid \(userL?.mail) + \(userL?.password) ] \(userL?.age)", for: .normal)
-                    return
-                }*/
-                //inicio  de checar
                 
                 var providersCount = 0
                 
@@ -190,65 +159,32 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     (providers, error) in
                     
                     if let error = error {
-                        
-                        
                         print(error.localizedDescription)
-                        self.label1.text = error.localizedDescription
+                        //self.label1.text = error.localizedDescription
                         
-                        self.firstButton.setTitle("disponible", for: .normal)
+                        //self.firstButton.setTitle("disponible", for: .normal)
                         
                         //self.navigationController?.pushViewController(datosViewC, animated: true)
                         
                     } else if let providers = providers {
-                        self.label1.text = "\(providers.count)"
                         print(providers)
-                        
-                        providersCount = providers.count
-                        
-                        self.firstButton.setTitle("ocupado", for: .normal)
-                        
+
+                        //self.firstButton.setTitle("ocupado", for: .normal)
                         
                         self.navigationController?.pushViewController(signViewC, animated: true)
                         
                     } else {
-                        self.firstButton.setTitle("libre", for: .normal)
+                        //self.firstButton.setTitle("libre", for: .normal)
                         
                         self.navigationController?.pushViewController(datosViewC, animated: true)
                         
                     }
                     
                     
-                    
-                    
-                })  //final de checar
-                /*
-                if providersCount == 0 {
-                    label1.text = "no hay nada en la lista"
-                    self.firstButton.setTitle("no hay nada en la lista", for: .normal)
-                    
-                } else if providersCount <= 1 {
-                    label1.text = "hay algo en la lista"
-                    self.firstButton.setTitle("hay algo en la lista", for: .normal)
-                } */
-                
-                
-                
-                /*
-                 var data:AuthDataResultCallback
-                 Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                 // ...
-                 guard let user = authResult?.user else { return }
-                 }*/
-                
-                //aqui acaba
-                
-                
-                
-                
+                })
                 
             }
             
-            //userL?.mail = emailTextField.text
         }
         
     }

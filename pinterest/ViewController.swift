@@ -93,8 +93,7 @@ class ViewController: UIViewController {
     }
     
     
-    //
-    let backButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action:#selector(handleButton))
+    
     
     
     let buttonContainerView : UIView =  {

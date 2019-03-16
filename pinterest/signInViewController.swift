@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseUI
 
 class singInViewController: UIViewController {
     
@@ -69,8 +70,21 @@ class singInViewController: UIViewController {
         if passwordTextField.text != "" {
             userL?.password = passwordTextField.text
             activeScreen = screens.Mail //Esta seria mas bien preventiva. Checar si afecta
-            let datosViewC = datosViewController()
-            self.navigationController?.pushViewController(datosViewC, animated: true)
+            
+            
+            
+            
+            Auth.auth().signIn(withEmail: userL!.mail!, password: userL!.password!){
+                (user, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    print("login exitoso")
+                    self.logInButton.setTitle("ya salio", for: .normal)
+                }
+            }
+            
+            //let authUI = Auth.auth().defa
         }
     }
     
@@ -85,3 +99,5 @@ class singInViewController: UIViewController {
     }
     
 }
+
+

@@ -30,7 +30,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
-        emailTextField.setLeftPaddingPoints(padding1)//Padding
+        //emailTextField.setLeftPaddingPoints(padding1)//Padding
         if activeScreen.rawValue == screens.Password.rawValue {emailTextField.isSecureTextEntry = true}
         
         

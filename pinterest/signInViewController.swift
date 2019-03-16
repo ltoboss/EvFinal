@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseUI
 
 class singInViewController: UIViewController {
     
@@ -78,9 +77,11 @@ class singInViewController: UIViewController {
                 (user, error) in
                 if error != nil {
                     print(error)
+                    //self.logInButton.setTitle("login no salio", for: .normal)
+                    
                 } else {
                     print("login exitoso")
-                    self.logInButton.setTitle("ya salio", for: .normal)
+                    //self.logInButton.setTitle("ya salio", for: .normal)
                 }
             }
             

@@ -38,11 +38,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         
         
-        let nameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: 40))
+        let nameLabel = UILabel(frame: CGRect(x: cell.bounds.size.width * 0.02, y: cell.bounds.size.height * 0.8, width: cell.bounds.size.width * 0.93, height: cell.bounds.size.height * 0.16))
         
         nameLabel.text = "celda"
-        nameLabel.textAlignment = .center
+        //nameLabel.textAlignment = .center
         cell.contentView.addSubview(nameLabel)
+        //nameLabel.bottomAnchor(equalTo: cell.bottomAnchor).isActive = true
         
         return cell
     }

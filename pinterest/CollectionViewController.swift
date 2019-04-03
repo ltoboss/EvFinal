@@ -29,9 +29,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
     }
     
+    let pines = ["Coche", "Java", "Casa", "C#", "Laptop", "Escritorio", "Almohada", "PC"]
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return pines.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,7 +40,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         //settear label
         let nameLabel = UILabel(frame: CGRect(x: cell.bounds.size.width * 0.02, y: cell.bounds.size.height * 0.8, width: cell.bounds.size.width * 0.93, height: cell.bounds.size.height * 0.16))
-        nameLabel.text = "celda"
+        nameLabel.text =  pines[indexPath.item] //"celda"
         //nameLabel.textAlignment = .center
         cell.contentView.addSubview(nameLabel)
         
@@ -56,7 +57,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width / 2) - 16, height: 100)
+        return CGSize(width: (view.frame.width / 2) - 16, height: (view.frame.width / 2) - 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

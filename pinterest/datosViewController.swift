@@ -86,6 +86,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     let datosViewC = datosViewController()
                     let signViewC = singInViewController()
                     
+                    
                     Auth.auth().fetchProviders(forEmail: emailTextField.text!, completion: {
                         (providers, error) in
                         
@@ -109,6 +110,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     self.navigationController?.pushViewController(datosViewC, animated: true)
                 
                 case .Age:
+                    let collectionViewC = CollectionViewController()
                     userL?.age = emailTextField.text
                     guard let email = userL!.mail, let password = userL!.password, let age = userL!.age else { return }
                     
@@ -134,6 +136,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         mensajeRef.updateChildValues(mensaje)
                     }
                 
+                    self.navigationController?.pushViewController(collectionViewC, animated: true)
             }//Fin de switch case
             
         }

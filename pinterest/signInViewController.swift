@@ -47,6 +47,8 @@ class singInViewController: UIViewController {
         tf.placeholder = "Password"
         tf.isSecureTextEntry = true
         tf.backgroundColor = .white
+        
+        tf.text = "usuario55"
         return tf
     }()
     

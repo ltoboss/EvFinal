@@ -37,13 +37,20 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         
-        
+        //settear label
         let nameLabel = UILabel(frame: CGRect(x: cell.bounds.size.width * 0.02, y: cell.bounds.size.height * 0.8, width: cell.bounds.size.width * 0.93, height: cell.bounds.size.height * 0.16))
-        
         nameLabel.text = "celda"
         //nameLabel.textAlignment = .center
         cell.contentView.addSubview(nameLabel)
-        //nameLabel.bottomAnchor(equalTo: cell.bottomAnchor).isActive = true
+        
+        //settear pin
+        /*let pinImage = #imageLiteral(resourceName: "pinterestPin")
+        let backgroundView = UIImageView(frame:CGRect(x: cell.bounds.size.width, y:0, width: cell.bounds.width, height: cell.bounds.height * 0.8))
+        backgroundView.image = pinImage*/
+        /*let backgroundView = UIImageView(image: pinImage)
+        backgroundView.frame = CGRect(x: cell.bounds.size.width, y:0, width: cell.bounds.width, height: cell.bounds.height * 0.8)*/
+        //cell.contentView.addSubview(backgroundView)
+        
         
         return cell
     }
@@ -69,10 +76,12 @@ class pinCell : UICollectionViewCell {
     
     func setup(){
         self.backgroundColor = .gray
-        //self.addSubview(nameLabel)
         
-        //nameLabel.frame = CGRect(x: 0, y:40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.75)
-        //nameLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height:0)
+        self.addSubview(imagenPin)
+      
+        imagenPin.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        imagenPin.backgroundColor = UIColor.blue
+        
         
     }
     /*let label = UILabel()
@@ -80,7 +89,14 @@ class pinCell : UICollectionViewCell {
      //label.textAlignment = .center
      label.textColor = .white
      return label*/
-    
+    let imagenPin: UIImageView = {
+       let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        let pinImage = #imageLiteral(resourceName: "pinterestPin")
+        iv.image = pinImage
+        iv.backgroundColor = UIColor.red
+        return iv
+    }()
     
     
     required init?(coder aDecoder: NSCoder){

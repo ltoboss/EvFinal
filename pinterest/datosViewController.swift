@@ -46,6 +46,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = activeScreen.rawValue
         tf.backgroundColor = .white
+        tf.text = "usuario55@gmail.com"
         return tf
     }()
     
@@ -80,6 +81,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         if emailTextField.text != "" {
             switch activeScreen { //Inicio de Switch case
                 case .Mail:
+                    
                     userL = userLocal()
                     userL?.mail = emailTextField.text
                 

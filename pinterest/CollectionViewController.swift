@@ -25,7 +25,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         /*collectionView?.dataSource = self
         collectionView?.delegate = self*/
         
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = .black
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
     }
     
@@ -40,11 +40,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         //settear pin
         let pinImage = #imageLiteral(resourceName: "pinterestPin")
-         let backgroundView = UIImageView(frame:CGRect(x: 0, y:0, width: cell.bounds.width, height: cell.bounds.height * 0.8))
-         backgroundView.image = pinImage
+        let backgroundView = UIImageView(frame:CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.width))
+        backgroundView.image = pinImage
         /*let backgroundView = UIImageView(image: pinImage)
          backgroundView.frame = CGRect(x: cell.bounds.size.width, y:0, width: cell.bounds.width, height: cell.bounds.height * 0.8)*/
         cell.contentView.addSubview(backgroundView)
+        
+        
         
         //settear label
         let nameLabel = UILabel(frame: CGRect(x: cell.bounds.size.width * 0.02, y: cell.bounds.size.height * 0.8, width: cell.bounds.size.width * 0.93, height: cell.bounds.size.height * 0.16))
@@ -52,14 +54,14 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         //nameLabel.textAlignment = .center
         cell.contentView.addSubview(nameLabel)
         
-        
+        cell.backgroundColor = .white
         
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width / 2) - 16, height: (view.frame.width / 2) - 16)
+        return CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -87,11 +89,7 @@ class pinCell : UICollectionViewCell {
         
         
     }
-    /*let label = UILabel()
-     label.text = "nombre"
-     //label.textAlignment = .center
-     label.textColor = .white
-     return label*/
+    /*
     let imagenPin: UIImageView = {
        let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -99,7 +97,7 @@ class pinCell : UICollectionViewCell {
         iv.image = pinImage
         iv.backgroundColor = UIColor.red
         return iv
-    }()
+    }()*/
     
     
     required init?(coder aDecoder: NSCoder){

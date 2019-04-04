@@ -38,6 +38,8 @@ class singInViewController: UIViewController {
         logInButton.leftAnchor.constraint(equalTo: passwordTextField.leftAnchor).isActive = true
         logInButton.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor).isActive = true
         //logInButton.layer.cornerRadius = 10
+        logInButton.layer.cornerRadius = 10
+        
     }
     
     //****************** VARIABLES *********************

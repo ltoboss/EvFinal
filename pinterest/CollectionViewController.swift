@@ -46,7 +46,11 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
          backgroundView.frame = CGRect(x: cell.bounds.size.width, y:0, width: cell.bounds.width, height: cell.bounds.height * 0.8)*/
         cell.contentView.addSubview(backgroundView)
         
-        
+        //settear imagen de opciones
+        let pinOptionsImage = #imageLiteral(resourceName: "3Puntos")
+        let pinOptionsImageView = UIImageView(frame: CGRect(x: cell.bounds.size.width * 0.8, y: cell.bounds.size.height * 0.8, width: cell.bounds.size.width * 0.16, height: cell.bounds.size.height * 0.16))
+        pinOptionsImageView.image = pinOptionsImage
+        cell.contentView.addSubview(pinOptionsImageView)
         
         //settear label
         let nameLabel = UILabel(frame: CGRect(x: cell.bounds.size.width * 0.02, y: cell.bounds.size.height * 0.8, width: cell.bounds.size.width * 0.93, height: cell.bounds.size.height * 0.16))

@@ -112,7 +112,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     self.navigationController?.pushViewController(datosViewC, animated: true)
                 
                 case .Age:
-                    let collectionViewC = CollectionViewController()
+                    
                     userL?.age = emailTextField.text
                     guard let email = userL!.mail, let password = userL!.password, let age = userL!.age else { return }
                     
@@ -138,6 +138,10 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         mensajeRef.updateChildValues(mensaje)
                     }
                 
+                    //self.navigationController?.pushViewController(collectionViewC, animated: true)
+                
+                    let layout = UICollectionViewFlowLayout()
+                    let collectionViewC = CollectionViewController(collectionViewLayout: layout)
                     self.navigationController?.pushViewController(collectionViewC, animated: true)
             }//Fin de switch case
             

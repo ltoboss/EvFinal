@@ -37,7 +37,6 @@ class singInViewController: UIViewController {
         logInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         logInButton.leftAnchor.constraint(equalTo: passwordTextField.leftAnchor).isActive = true
         logInButton.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor).isActive = true
-        //logInButton.layer.cornerRadius = 10
         logInButton.layer.cornerRadius = 10
         
     }
@@ -92,12 +91,11 @@ class singInViewController: UIViewController {
                 }
             }
             
-            //let authUI = Auth.auth().defa
         }
     }
     
     
-    // -------------- Al regresar a la pantallas anterior ---------------
+    // -------------- Al regresar a la pantalla anterior ---------------
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         

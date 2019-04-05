@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		55078FB22253EB6800D763C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55078FB12253EB6800D763C4 /* GoogleService-Info.plist */; };
-		55078FB62253F7E600D763C4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55078FB52253F7E600D763C4 /* CollectionViewCell.swift */; };
 		552DFA4B2254977D008D07C8 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DFA4A2254977D008D07C8 /* CollectionViewController.swift */; };
 		55AFC85322323BE9003E01FD /* datosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85222323BE9003E01FD /* datosViewController.swift */; };
 		55AFC85522324F3F003E01FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85422324F3F003E01FD /* User.swift */; };
@@ -20,6 +19,8 @@
 		F34FF5502232096B009FBCD2 /* pinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF54F2232096B009FBCD2 /* pinterestTests.swift */; };
 		F34FF55B2232096B009FBCD2 /* pinterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF55A2232096B009FBCD2 /* pinterestUITests.swift */; };
 		F3632FB3223B3B5D0083374B /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3632FB2223B3B5D0083374B /* signInViewController.swift */; };
+		F3694FB02256D46E00757C7D /* pinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3694FAF2256D46E00757C7D /* pinCell.swift */; };
+		F3694FB22256D78A00757C7D /* TableViewSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3694FB12256D78A00757C7D /* TableViewSample.swift */; };
 		F6906D5AF036644B4D4852E8 /* Pods_pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E65ED5B3EA09CA0C46E3E3 /* Pods_pinterest.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +44,6 @@
 /* Begin PBXFileReference section */
 		007368E06AAFBDC8406719DF /* Pods-pinterest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pinterest.release.xcconfig"; path = "Target Support Files/Pods-pinterest/Pods-pinterest.release.xcconfig"; sourceTree = "<group>"; };
 		55078FB12253EB6800D763C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		55078FB52253F7E600D763C4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		552DFA4A2254977D008D07C8 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		55AFC85222323BE9003E01FD /* datosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datosViewController.swift; sourceTree = "<group>"; };
 		55AFC85422324F3F003E01FD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -63,6 +63,8 @@
 		F34FF55A2232096B009FBCD2 /* pinterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinterestUITests.swift; sourceTree = "<group>"; };
 		F34FF55C2232096B009FBCD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3632FB2223B3B5D0083374B /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
+		F3694FAF2256D46E00757C7D /* pinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinCell.swift; sourceTree = "<group>"; };
+		F3694FB12256D78A00757C7D /* TableViewSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,9 +135,11 @@
 		F34FF5392232096B009FBCD2 /* pinterest */ = {
 			isa = PBXGroup;
 			children = (
+				F3694FB12256D78A00757C7D /* TableViewSample.swift */,
 				F34FF53A2232096B009FBCD2 /* AppDelegate.swift */,
 				F34FF53C2232096B009FBCD2 /* ViewController.swift */,
 				552DFA4A2254977D008D07C8 /* CollectionViewController.swift */,
+				F3694FAF2256D46E00757C7D /* pinCell.swift */,
 				55AFC85222323BE9003E01FD /* datosViewController.swift */,
 				55AFC85422324F3F003E01FD /* User.swift */,
 				F3632FB2223B3B5D0083374B /* signInViewController.swift */,
@@ -144,7 +148,6 @@
 				F34FF5412232096B009FBCD2 /* Assets.xcassets */,
 				F34FF5432232096B009FBCD2 /* LaunchScreen.storyboard */,
 				F34FF5462232096B009FBCD2 /* Info.plist */,
-				55078FB52253F7E600D763C4 /* CollectionViewCell.swift */,
 			);
 			path = pinterest;
 			sourceTree = "<group>";
@@ -350,10 +353,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55AFC85522324F3F003E01FD /* User.swift in Sources */,
+				F3694FB02256D46E00757C7D /* pinCell.swift in Sources */,
 				F34FF53D2232096B009FBCD2 /* ViewController.swift in Sources */,
-				55078FB62253F7E600D763C4 /* CollectionViewCell.swift in Sources */,
 				F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */,
 				552DFA4B2254977D008D07C8 /* CollectionViewController.swift in Sources */,
+				F3694FB22256D78A00757C7D /* TableViewSample.swift in Sources */,
 				55AFC85322323BE9003E01FD /* datosViewController.swift in Sources */,
 				F3632FB3223B3B5D0083374B /* signInViewController.swift in Sources */,
 			);

@@ -13,7 +13,7 @@ class TableViewSample: UITableViewController {
     let identifier = "cellId1"
     
     override func viewDidLoad() {
-        view.backgroundColor = .red
+        view.backgroundColor = .black
         tableView.register(CustomCell.self, forCellReuseIdentifier: identifier)
         
     }

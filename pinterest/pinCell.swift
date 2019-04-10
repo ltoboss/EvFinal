@@ -28,11 +28,13 @@ class pinCell : UICollectionViewCell {
         
         
         self.addSubview(label1)
-        label1.topAnchor.constraint(equalTo: imageView1.bottomAnchor).isActive = true
+        label1.topAnchor.constraint(equalTo: imageView1.bottomAnchor, constant: (self.bounds.height * 0.02)).isActive = true
         label1.leftAnchor.constraint(equalTo: imageView1.leftAnchor).isActive = true
-        label1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 93/100).isActive = true
-        label1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 2/10).isActive = true
-        
+        label1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 80/100).isActive = true
+        //label1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 6/100).isActive = true
+        label1.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        label1.backgroundColor = .red
+        print("alto de celda \(label1.bounds.height)")
         
         self.addSubview(imageViewOptions)
         imageViewOptions.centerYAnchor.constraint(equalTo: label1.centerYAnchor).isActive = true

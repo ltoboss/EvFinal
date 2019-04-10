@@ -30,6 +30,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         cell.label1.text = pines[indexPath.item]
+        
+        if indexPath.item == 0 {
+            cell.imageView1.image = #imageLiteral(resourceName: "auto_2")
+            cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
+            
+        }
+        
         //settear pin
         /*let pinImage = #imageLiteral(resourceName: "pinterestPin")
         let backgroundView = UIImageView(frame:CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.width))

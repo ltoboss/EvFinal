@@ -22,6 +22,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     let pines = ["Coche", "Java", "Casa", "C#", "Laptop", "Escritorio", "Almohada", "PC"]
+    let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1")]
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pines.count
@@ -31,9 +33,18 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         cell.label1.text = pines[indexPath.item]
         
+        
         if indexPath.item == 0 {
-            cell.imageView1.image = #imageLiteral(resourceName: "auto_2")
+            let newImage : UIImage = imagenes[0]
+            //cell.imageView1.image = #imageLiteral(resourceName: "auto_2")
+            cell.imageView1.image = newImage
             cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
+            //let assetWidht = newImage.size.width
+            //let heightMultiplier = newImage.size.height / newImage.size.width
+            //let currentWidth = cell.imageView1.bounds.width
+            
+            //let cellSize = CGSize(width: 20, height: 40)
+            
             
         }
         
@@ -57,18 +68,36 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         cell.contentView.addSubview(nameLabel)*/
         
         //cell.backgroundColor = .white
-        
+        print("\(indexPath.item) asignar cell")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
+        print("\(indexPath.item) size cell")
+        //return CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
+        return setSize(indexPathPosition: indexPath)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
+    
+    func setSize(indexPathPosition : IndexPath) -> CGSize{
+        var cellSize : CGSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
+        
+        if indexPathPosition.item == 0 {
+            let newImage : UIImage = imagenes[0]
+            let assetWidht = newImage.size.width
+            let heightMultiplier = newImage.size.height / newImage.size.width
+            
+            cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * heightMultiplier) - 16)
+            
+        }
+        
+        return cellSize
+    }
+    
     
     
 }

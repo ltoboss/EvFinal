@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //window?.rootViewController = UINavigationController(rootViewController: TableViewSample())
         
+        let layout = UICollectionViewFlowLayout()
+        window?.rootViewController = UINavigationController(rootViewController:CollectionViewController(collectionViewLayout: layout))
+        
+        
         FirebaseApp.configure()
         // Override point for customization after application launch.
         return true

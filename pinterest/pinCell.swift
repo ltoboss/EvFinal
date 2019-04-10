@@ -18,9 +18,9 @@ class pinCell : UICollectionViewCell {
     func setup(){
         self.addSubview(imageView1)
         
-        imageView1.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        imageView1.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height * 0.02).isActive = true
         imageView1.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        imageView1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 9/10).isActive = true
+        imageView1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 8/10).isActive = true
         imageView1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 8/10).isActive = true
         //imageView1.heightAnchor.constraint(equalTo: self.bounds.height, multiplier: 8/10)
         //imageView1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 8/10)

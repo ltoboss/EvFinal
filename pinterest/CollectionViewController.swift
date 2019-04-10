@@ -91,7 +91,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             let assetWidht = newImage.size.width
             let heightMultiplier = newImage.size.height / newImage.size.width
             
-            cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * heightMultiplier) - 16)
+            //cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * heightMultiplier) + (view.frame.height * 0.04) + 17)
+            cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) - 16) * heightMultiplier)
             
         }
         

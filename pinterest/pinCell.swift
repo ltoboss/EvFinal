@@ -22,7 +22,8 @@ class pinCell : UICollectionViewCell {
         imageView1.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         imageView1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 8/10).isActive = true
         imageView1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 8/10).isActive = true
-        //imageView1.heightAnchor.constraint(equalTo: self.bounds.height, multiplier: 8/10)
+        imageView1.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.8)).isActive = true
+            //imageView1.heightAnchor.constraint(equalTo: self.bounds.height, multiplier: 8/10)
         //imageView1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 8/10)
         //imageView1.heightAnchor.constraint(equalToConstant: (self.bounds.height * 0.08) )
         

@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //window?.rootViewController = UINavigationController(rootViewController: TableViewSample())
         
+        //let layout = PinterestLayout()
         let layout = UICollectionViewFlowLayout()
         window?.rootViewController = UINavigationController(rootViewController:CollectionViewController(collectionViewLayout: layout))
         

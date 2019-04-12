@@ -24,8 +24,10 @@ class pinCell : UICollectionViewCell {
         imageView1.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height * 0.02).isActive = true
         imageView1.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         imageView1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 8/10).isActive = true
-        imageView1.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 8/10).isActive = true
-        imageView1.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.8)).isActive = true
+        //imageView1.heightAnchor.constraint(equalToConstant: self.bounds.height - (17 * 1.06)).isActive = true
+        //imageView1.heightAnchor.constraint(equalToConstant: imageView1.widthAnchor *  )
+        //imageView1.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.8)).isActive = true
+        print("PROBAR HEIGHT AQUI")
         
         //Set label
         self.addSubview(label1)
@@ -34,14 +36,6 @@ class pinCell : UICollectionViewCell {
         label1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 80/100).isActive = true
         label1.heightAnchor.constraint(equalToConstant: 17).isActive = true
         label1.backgroundColor = .red //Coloracion de prueba
-        
-        //Label de prueba
-        self.addSubview(label3)
-        label3.topAnchor.constraint(equalTo: imageView1.topAnchor, constant: (self.bounds.height * 0.02)).isActive = true
-        label3.leftAnchor.constraint(equalTo: imageView1.leftAnchor).isActive = true
-        label3.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 80/100).isActive = true
-        label3.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        label3.backgroundColor = .green
         
         //Set image de puntitos
         self.addSubview(imageViewOptions)
@@ -55,14 +49,6 @@ class pinCell : UICollectionViewCell {
         
     }
     
-    //Label de prueba
-    let label3 : UILabel = {
-        let label2 = UILabel()
-        label2.textColor = .black
-        label2.text = "123"
-        label2.translatesAutoresizingMaskIntoConstraints = false
-        return label2
-    }()
     
     //Imagen
     let imageView1 : UIImageView = {

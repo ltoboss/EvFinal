@@ -10,6 +10,8 @@ import UIKit
 
 protocol PinterestLayoutDelegate: class {
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
+    func collectionView(_ collectionView:UICollectionView, widthForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
+    
 }
 
 class PinterestLayout : UICollectionViewLayout {
@@ -44,6 +46,9 @@ class PinterestLayout : UICollectionViewLayout {
     
     //------------------Parte 2 ------------------------
     override func prepare() {
+        
+        //print("----------- setteando layout ------------")
+        
         // 1
         guard cache.isEmpty == true, let collectionView = collectionView else {
             return
@@ -64,7 +69,15 @@ class PinterestLayout : UICollectionViewLayout {
             
             // 4
             let photoHeight = delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)
-            let height = cellPadding * 2 + photoHeight
+            let photoWidth = delegate.collectionView(collectionView, widthForPhotoAtIndexPath: indexPath)
+            //let height = cellPadding * 2 + photoHeight
+            var height = photoHeight
+            print("====HEIGHT \(height)")
+            print("------- setteando altura de foto \(delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)) ------")
+            //height =  ( photoHeight /  photoWidth)
+            /*columnWidth * */
+            //height = 700
+            
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             

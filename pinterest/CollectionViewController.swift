@@ -8,6 +8,9 @@
 
 import UIKit
 
+var currentImageWidthCell : CGFloat = 0
+var currentImageHeightCell : CGFloat = 0
+
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellId = "cellId"
     
@@ -17,7 +20,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
-        
+        print("------- setteando controller ------")
         collectionView?.backgroundColor = .black
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
@@ -33,30 +36,15 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
+        print("------- setteando custom cell ------")
+        
         cell.label1.text = pines[indexPath.item]
-        //cell.sizeLabel.text = "abc"
-        
-        
-        /*
-        if indexPath.item == 0 {
-            let newImage : UIImage = imagenes[0]
-            cell.imageView1.image = #imageLiteral(resourceName: "auto_2")
-            cell.imageView1.image = newImage
-            cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
-        }*/
-        
         let imageToUse : UIImage = imagenes[indexPath.item]
         cell.imageView1.image = imageToUse
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        /*
-        let currentItem = indexPath.item
-        if indexPath.item > 1 {
-            let upperIndexPath = IndexPath(item: currentItem - 2, section: 0)
-            cell.topAnchor.constraint(equalTo: (collectionView.cellForItem(at: upperIndexPath)?.bottomAnchor)!).isActive = true
-            
-        }*/
+        currentImageWidthCell = cell.imageView1.bounds.width
+        currentImageHeightCell = cell.imageView1.bounds.height
         
         print("\(indexPath.item) asignar cell")
         return cell
@@ -76,13 +64,19 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         var cellSize : CGSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
         //var cellHeight
         
+        
+        
         if indexPathPosition.item == 0 {
             let newImage : UIImage = imagenes[0]
             let assetWidht = newImage.size.width
             let heightMultiplier = newImage.size.height / newImage.size.width
             
+            var imageHeight : CGFloat = (((view.frame.width / 2) - 16) * heightMultiplier) + (17 * 1.06)
+            
+            //imageHeight = 500
+            
             //cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * heightMultiplier) + (view.frame.height * 0.04) + 17)
-            cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ( ((view.frame.width / 2) - 16) * heightMultiplier )  )
+            cellSize = CGSize(width: (view.frame.width / 2) - 16, height:imageHeight)
             //var cellHeight = (((view.frame.width / 2) - 16) * heightMultiplier)
             //print("cell height final \(cellHeight)")
             
@@ -105,6 +99,14 @@ extension CollectionViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
         
+        print("sacamos height de imagen \(indexPath.item)")
         return imagenes[indexPath.item].size.height
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        widthForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+        
+        return imagenes[indexPath.item].size.height
+    }
+    
 }

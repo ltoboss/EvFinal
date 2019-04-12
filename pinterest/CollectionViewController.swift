@@ -39,8 +39,9 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let imageToUse : UIImage = imagenes[indexPath.item]
         cell.imageView1.image = imageToUse
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
-        print("**Dimensiones de imagen \(indexPath.item): x:\(cell.imageView1.frame.size.width) y:\(cell.imageView1.frame.size.height)")
+        //print("**Dimensiones de imagen \(indexPath.item): x:\(cell.imageView1.frame.size.width) y:\(cell.imageView1.frame.size.height)")
         //print("\(indexPath.item) asignar cell")
+        print("--setteando celda para item \(indexPath.item)")
         return cell
     }
     

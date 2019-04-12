@@ -84,7 +84,12 @@ class PinterestLayout : UICollectionViewLayout {
             //print("------- setteando altura de foto \(delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)) ------")
             //height =  ( photoHeight /  photoWidth)
             /*columnWidth * */
-            height = 34 + photoHeight
+            //height = 34 + (photoHeight * delegate.collectionView(collectionView, currentPhotoWidth: indexPath) ) // / photoWidth
+            height = 34 + photoHeight * 0.8
+            print("++setteando layout para item \(indexPath.item)")
+            print("photo width \(photoWidth)")
+            print("width de celda \(columnWidth)")
+            height = 34 + (photoHeight ) // photoWidth
             
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)

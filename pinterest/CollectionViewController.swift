@@ -23,8 +23,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
     }
     
-    let pines = ["Coche", "Java", "Casa"]//, "C#", "Laptop", "Escritorio", "Almohada", "PC"]
-    let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1")]
+    let pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
+    let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -36,12 +36,19 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         cell.label1.text = pines[indexPath.item]
         //cell.sizeLabel.text = "abc"
         
+        
+        /*
         if indexPath.item == 0 {
             let newImage : UIImage = imagenes[0]
             cell.imageView1.image = #imageLiteral(resourceName: "auto_2")
             cell.imageView1.image = newImage
             cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
-        }
+        }*/
+        
+        let imageToUse : UIImage = imagenes[indexPath.item]
+        cell.imageView1.image = imageToUse
+        cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
+        
         
         /*
         let currentItem = indexPath.item

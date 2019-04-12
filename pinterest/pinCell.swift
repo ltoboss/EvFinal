@@ -27,6 +27,8 @@ class pinCell : UICollectionViewCell {
         //imageView1.heightAnchor.constraint(equalToConstant: self.bounds.height - (17 * 1.06)).isActive = true
         //imageView1.heightAnchor.constraint(equalToConstant: imageView1.widthAnchor *  )
         //imageView1.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.8)).isActive = true
+        //imageView1.heightAnchor.constraint(equalToConstant: (imageView1.image?.size.width)! * ((imageView1.image?.size.height)! / (imageView1.image?.size.width)!))
+        
         print("PROBAR HEIGHT AQUI")
         
         //Set label
@@ -55,6 +57,7 @@ class pinCell : UICollectionViewCell {
         let imageView2 = UIImageView()
         imageView2.image = #imageLiteral(resourceName: "pinterestPin")
         imageView2.translatesAutoresizingMaskIntoConstraints = false
+        //imageView2.image?.size.height = imageView2.image?.size.width * (imageView2.image?.size.height / imageView2.image?.size.width)
         return imageView2
     }()
     

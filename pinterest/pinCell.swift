@@ -21,11 +21,12 @@ class pinCell : UICollectionViewCell {
         
         //Set image
         self.addSubview(imageView1)
-        imageView1.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height * 0.02).isActive = true
+        imageView1.topAnchor.constraint(equalTo: self.topAnchor, constant: (17 * (1/3) )).isActive = true
         imageView1.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         imageView1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 8/10).isActive = true
-        //imageView1.heightAnchor.constraint(equalToConstant: self.bounds.height - (17 * 1.06)).isActive = true
-        //imageView1.heightAnchor.constraint(equalToConstant: imageView1.widthAnchor *  )
+        imageView1.heightAnchor.constraint(equalToConstant: self.bounds.height - 34).isActive = true
+        imageView1.heightAnchor.constraint(equalToConstant: 500)
+        
         //imageView1.heightAnchor.constraint(equalToConstant: (self.frame.height * 0.8)).isActive = true
         //imageView1.heightAnchor.constraint(equalToConstant: (imageView1.image?.size.width)! * ((imageView1.image?.size.height)! / (imageView1.image?.size.width)!))
         
@@ -33,7 +34,7 @@ class pinCell : UICollectionViewCell {
         
         //Set label
         self.addSubview(label1)
-        label1.topAnchor.constraint(equalTo: imageView1.bottomAnchor, constant: (self.bounds.height * 0.02)).isActive = true
+        label1.topAnchor.constraint(equalTo: imageView1.bottomAnchor, constant: (17 / 3 )).isActive = true
         label1.leftAnchor.constraint(equalTo: imageView1.leftAnchor).isActive = true
         label1.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 80/100).isActive = true
         label1.heightAnchor.constraint(equalToConstant: 17).isActive = true

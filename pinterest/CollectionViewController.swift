@@ -14,18 +14,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        /*collectionView?.dataSource = self
-        collectionView?.delegate = self*/
+        if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
         
         collectionView?.backgroundColor = .black
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
-        
-        
-        
     }
     
-    let pines = ["Coche", "Java", "Casa", "C#", "Laptop", "Escritorio", "Almohada", "PC"]
+    let pines = ["Coche", "Java", "Casa"]//, "C#", "Laptop", "Escritorio", "Almohada", "PC"]
     let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1")]
     
     
@@ -60,13 +58,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         print("\(indexPath.item) size cell")
         //return CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
+        
+        
         return setSize(indexPathPosition: indexPath)
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    }
     
     func setSize(indexPathPosition : IndexPath) -> CGSize{
         var cellSize : CGSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * 1.2 ) - 16)
@@ -78,7 +75,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             let heightMultiplier = newImage.size.height / newImage.size.width
             
             //cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) * heightMultiplier) + (view.frame.height * 0.04) + 17)
-            cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ((view.frame.width / 2) - 16) * heightMultiplier )
+            cellSize = CGSize(width: (view.frame.width / 2) - 16, height: ( ((view.frame.width / 2) - 16) * heightMultiplier )  )
             //var cellHeight = (((view.frame.width / 2) - 16) * heightMultiplier)
             //print("cell height final \(cellHeight)")
             
@@ -90,6 +87,17 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
     
 }
 
+
+extension CollectionViewController: PinterestLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+        
+        return imagenes[indexPath.item].size.height
+    }
+}

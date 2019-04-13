@@ -84,7 +84,7 @@ class singInViewController: UIViewController {
                     
                 } else {
                     print("login exitoso")
-                    let layout = UICollectionViewFlowLayout()
+                    let layout = PinterestLayout()
                     let collectionViewC = CollectionViewController(collectionViewLayout: layout)
                     self.navigationController?.pushViewController(collectionViewC, animated: true)
                     //self.logInButton.setTitle("ya salio", for: .normal)

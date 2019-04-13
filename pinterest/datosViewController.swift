@@ -140,7 +140,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                 
                     //self.navigationController?.pushViewController(collectionViewC, animated: true)
                 
-                    let layout = UICollectionViewFlowLayout()
+                    let layout = PinterestLayout()
                     let collectionViewC = CollectionViewController(collectionViewLayout: layout)
                     self.navigationController?.pushViewController(collectionViewC, animated: true)
             }//Fin de switch case

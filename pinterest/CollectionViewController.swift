@@ -49,6 +49,17 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
+    func setHeight(imagesList:[UIImage]) -> [CGFloat]{
+        var listHeights = [CGFloat]()
+        
+        for photo in imagesList {
+            //photo.size.height
+            listHeights.append(photo.size.height)
+        }
+        
+        return listHeights
+    }
+    
 }
 
 
@@ -61,7 +72,7 @@ extension CollectionViewController: PinterestLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         widthForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
-        return imagenes[indexPath.item].size.height
+        return imagenes[indexPath.item].size.width
     }
     
     func collectionView(_ collectionView: UICollectionView,

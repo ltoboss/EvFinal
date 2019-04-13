@@ -75,21 +75,14 @@ class PinterestLayout : UICollectionViewLayout {
             var height = (delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * (
                 delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath) /
                 delegate.collectionView(collectionView, widthForPhotoAtIndexPath: indexPath)  )) + 34
-            //height = photoHeight
-            //height = 500
-            height = (photoHeight * delegate.collectionView(collectionView, widthForPhotoAtIndexPath: indexPath) ) / (delegate.collectionView(collectionView, currentPhotoWidth: indexPath)) / 34
-                
-                
-            //print("====HEIGHT \(height)")
-            //print("------- setteando altura de foto \(delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)) ------")
-            //height =  ( photoHeight /  photoWidth)
-            /*columnWidth * */
-            //height = 34 + (photoHeight * delegate.collectionView(collectionView, currentPhotoWidth: indexPath) ) // / photoWidth
-            height = 34 + photoHeight * 0.8
+            
+            height = 34 + (delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight ) / photoWidth
             print("++setteando layout para item \(indexPath.item)")
-            print("photo width \(photoWidth)")
-            print("width de celda \(columnWidth)")
-            height = 34 + (photoHeight ) // photoWidth
+            print("probando (\(delegate.collectionView(collectionView, currentPhotoWidth: indexPath)) * \(photoHeight)) / \(photoWidth)")
+            print("resultado \((delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight )) / \(photoWidth)")
+            print("final    \((delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight ) / photoWidth)")
+            print("---------------------------------------------------")
+            //height = 34 + (photoHeight ) // photoWidth
             
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)

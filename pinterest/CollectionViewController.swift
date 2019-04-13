@@ -17,8 +17,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
-        print("------- setteando controller ------")
-        collectionView?.backgroundColor = .black
+        //print("------- setteando controller ------")
+        collectionView?.backgroundColor = .white
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
     }
@@ -33,31 +33,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
-        //print("------- setteando custom cell ------")
         
         cell.label1.text = pines[indexPath.item]
         let imageToUse : UIImage = imagenes[indexPath.item]
         cell.imageView1.image = imageToUse
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
-        //print("**Dimensiones de imagen \(indexPath.item): x:\(cell.imageView1.frame.size.width) y:\(cell.imageView1.frame.size.height)")
-        //print("\(indexPath.item) asignar cell")
-        print("--setteando celda para item \(indexPath.item)")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    }
-    
-    func setHeight(imagesList:[UIImage]) -> [CGFloat]{
-        var listHeights = [CGFloat]()
-        
-        for photo in imagesList {
-            //photo.size.height
-            listHeights.append(photo.size.height)
-        }
-        
-        return listHeights
     }
     
 }

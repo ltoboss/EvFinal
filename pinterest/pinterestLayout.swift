@@ -71,18 +71,13 @@ class PinterestLayout : UICollectionViewLayout {
             // 4
             let photoHeight = delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)
             let photoWidth = delegate.collectionView(collectionView, widthForPhotoAtIndexPath: indexPath)
-            //let height = cellPadding * 2 + photoHeight
-            var height = (delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * (
-                delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath) /
-                delegate.collectionView(collectionView, widthForPhotoAtIndexPath: indexPath)  )) + 34
-            
-            height = 34 + (delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight ) / photoWidth
-            print("++setteando layout para item \(indexPath.item)")
+            let height = 34 + (delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight ) / photoWidth
+            /*print("++setteando layout para item \(indexPath.item)")
             print("probando (\(delegate.collectionView(collectionView, currentPhotoWidth: indexPath)) * \(photoHeight)) / \(photoWidth)")
             print("resultado \((delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight )) / \(photoWidth)")
             print("final    \((delegate.collectionView(collectionView, currentPhotoWidth: indexPath) * photoHeight ) / photoWidth)")
-            print("---------------------------------------------------")
-            //height = 34 + (photoHeight ) // photoWidth
+            print("---------------------------------------------------")*/
+            
             
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)

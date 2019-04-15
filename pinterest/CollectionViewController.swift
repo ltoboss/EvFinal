@@ -45,6 +45,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("seleccionaste \(pines[indexPath.item])")
+        let pinDVC = pinDetailVC()
+        pinDVC.pinImage.image = imagenes[indexPath.item]
+        pinDVC.pinTitle.text = pines[indexPath.item]
+        
+        self.navigationController?.pushViewController(pinDVC, animated: true)
+        
+    }
+    
 }
 
 

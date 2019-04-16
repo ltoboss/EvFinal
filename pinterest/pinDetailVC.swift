@@ -14,14 +14,13 @@ class pinDetailVC : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         
-        
         //------------- Adding elements --------------
-        
         view.addSubview(scroll)
         view.addSubview(pinContainer)
         pinContainer.addSubview(pinImage)
         pinContainer.addSubview(pinTitle)
         
+        //-------------- Getting basic data --------------
         let originalWidth = pinImage.image!.size.width
         let originalHeight = pinImage.image!.size.height
         let newImageWidth = view.frame.width
@@ -35,14 +34,13 @@ class pinDetailVC : UIViewController {
         scroll.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scroll.contentSize.height = 10000
         
-        
+        //pinContainer
         //pinContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         pinContainer.topAnchor.constraint( equalTo: scroll.topAnchor, constant: 10 + (view.frame.width * (1/10)) ).isActive = true
         pinContainer.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
         pinContainer.heightAnchor.constraint(equalToConstant: newImageHeight + 50).isActive = true
         //pinContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 9/10).isActive = true
         pinContainer.widthAnchor.constraint(equalTo: scroll.widthAnchor).isActive = true
-        //general view settings
         //pinContainer.backgroundColor = .red
         
         //pinImage
@@ -51,16 +49,12 @@ class pinDetailVC : UIViewController {
         pinImage.widthAnchor.constraint(equalTo: pinContainer.widthAnchor).isActive = true
         pinImage.heightAnchor.constraint(equalToConstant: newImageHeight).isActive = true
         
-        
-        
-        
         //pinTitle
         pinTitle.topAnchor.constraint(equalTo: pinImage.bottomAnchor, constant: 10).isActive = true
         pinTitle.leftAnchor.constraint(equalTo: pinImage.leftAnchor).isActive = true
         pinTitle.widthAnchor.constraint(equalTo: pinImage.widthAnchor, multiplier: 8/10).isActive = true
         pinTitle.heightAnchor.constraint(equalToConstant: 20).isActive = true
         //pinTitle.backgroundColor = .green
-        
     }
     
     //****************** VARIABLES *********************
@@ -70,7 +64,6 @@ class pinDetailVC : UIViewController {
         scrollV.backgroundColor = .white
         return scrollV
     }()
-    
     
     let pinContainer : UIView = {
         let view = UIView()
@@ -94,7 +87,5 @@ class pinDetailVC : UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    
     
 }

@@ -46,12 +46,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("seleccionaste \(pines[indexPath.item])")
-        
-        
-        
-        
-        
+        //print("seleccionaste \(pines[indexPath.item])")
         animateCell(collectionView, indexPath: indexPath)
         changeScreen(indexPath: indexPath)
         
@@ -61,26 +56,20 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let pinDVC = pinDetailVC()
         pinDVC.pinImage.image = imagenes[indexPath.item]
         pinDVC.pinTitle.text = pines[indexPath.item]
-        
         self.navigationController?.pushViewController(pinDVC, animated: true)
         
     }
     
     func animateCell(_ collectionView: UICollectionView, indexPath : IndexPath){
-        
-        
         let cell = collectionView.cellForItem(at: indexPath) as! pinCell
-        
         let currentCellWidth = cell.frame.size.width
         let currentCellHeight = cell.frame.size.height
-        
-        print("size width:\(cell.frame.size.width)  height:\(cell.frame.size.height)")
+        //print("size width:\(cell.frame.size.width)  height:\(cell.frame.size.height)")
         
         let newImageHeight2 = (self.view.frame.size.width * cell.bounds.height) / cell.bounds.width
-        print("++++++newImageHeight = ( \(self.view.frame.size.width) *  \(cell.bounds.height) ) / \(cell.bounds.width) = \(   ((self.view.frame.size.width * cell.bounds.height) / cell.bounds.width)  )")
-        var newFrame = cell.imageView1.frame
+        //print("++++++newImageHeight = ( \(self.view.frame.size.width) *  \(cell.bounds.height) ) / \(cell.bounds.width) = \(   ((self.view.frame.size.width * cell.bounds.height) / cell.bounds.width)  )")
+        var newFrame = cell.frame
         let originalFrame = cell.frame
-        
         
         UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
             newFrame = CGRect(x: 0, y: 10, width: (currentCellWidth * 2), height: (currentCellHeight * 2))

@@ -43,7 +43,7 @@ class pinDetailVC : UIViewController {
         //pinContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 9/10).isActive = true
         pinContainer.widthAnchor.constraint(equalTo: scroll.widthAnchor).isActive = true
         //general view settings
-        pinContainer.backgroundColor = .red
+        //pinContainer.backgroundColor = .red
         
         //pinImage
         pinImage.topAnchor.constraint(equalTo: pinContainer.topAnchor, constant: 10).isActive = true
@@ -59,13 +59,7 @@ class pinDetailVC : UIViewController {
         pinTitle.leftAnchor.constraint(equalTo: pinImage.leftAnchor).isActive = true
         pinTitle.widthAnchor.constraint(equalTo: pinImage.widthAnchor, multiplier: 8/10).isActive = true
         pinTitle.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        pinTitle.backgroundColor = .green
-        
-        
-        
-        
-        
-        
+        //pinTitle.backgroundColor = .green
         
     }
     

@@ -47,10 +47,21 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("seleccionaste \(pines[indexPath.item])")
+        let cell = collectionView.cellForItem(at: indexPath) as! pinCell
         let pinDVC = pinDetailVC()
         pinDVC.pinImage.image = imagenes[indexPath.item]
         pinDVC.pinTitle.text = pines[indexPath.item]
+        let newImageHeight2 = (view.frame.size.width * imagenes[indexPath.item].size.height) / imagenes[indexPath.item].size.width
         
+        var newFrame = cell.imageView1.frame
+        
+        UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
+            
+            
+            newFrame = CGRect(x: 0, y: 10, width: self.view.frame.size.width, height: newImageHeight2)
+            cell.imageView1.frame = newFrame
+            
+        })
         self.navigationController?.pushViewController(pinDVC, animated: true)
         
     }

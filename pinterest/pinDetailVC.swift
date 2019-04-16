@@ -14,34 +14,44 @@ class pinDetailVC : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         
+        
         //------------- Adding elements --------------
+        
+        view.addSubview(scroll)
         view.addSubview(pinContainer)
-        view.addSubview(pinImage)
-        view.addSubview(pinTitle)
+        pinContainer.addSubview(pinImage)
+        pinContainer.addSubview(pinTitle)
         
-        
-        
-        
-        //------------- Setting elements ---------------
-        //pinContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        pinContainer.topAnchor.constraint( equalTo: view.topAnchor, constant: (view.frame.width * (1/10)) ).isActive = true
-        pinContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //pinContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 9/10).isActive = true
-        pinContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 9/10).isActive = true
-        
-        //pinImage
-        //pinImage.image
-        pinImage.topAnchor.constraint(equalTo: pinContainer.topAnchor, constant: 10).isActive = true
-        pinImage.centerXAnchor.constraint(equalTo: pinContainer.centerXAnchor).isActive = true
-        pinImage.widthAnchor.constraint(equalTo: pinContainer.widthAnchor, multiplier: 9/10).isActive = true
         let originalWidth = pinImage.image!.size.width
         let originalHeight = pinImage.image!.size.height
-        let newImageWidth = view.frame.width * (9/10) * (9/10)
+        let newImageWidth = view.frame.width
         let newImageHeight = (newImageWidth * originalHeight) / originalWidth
+        
+        //------------- Setting elements ---------------
+        //scroll
+        scroll.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scroll.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scroll.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scroll.contentSize.height = 10000
+        
+        
+        //pinContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        pinContainer.topAnchor.constraint( equalTo: scroll.topAnchor, constant: 10 + (view.frame.width * (1/10)) ).isActive = true
+        pinContainer.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
+        pinContainer.heightAnchor.constraint(equalToConstant: newImageHeight + 50).isActive = true
+        //pinContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 9/10).isActive = true
+        pinContainer.widthAnchor.constraint(equalTo: scroll.widthAnchor).isActive = true
+        //general view settings
+        pinContainer.backgroundColor = .red
+        
+        //pinImage
+        pinImage.topAnchor.constraint(equalTo: pinContainer.topAnchor, constant: 10).isActive = true
+        pinImage.centerXAnchor.constraint(equalTo: pinContainer.centerXAnchor).isActive = true
+        pinImage.widthAnchor.constraint(equalTo: pinContainer.widthAnchor).isActive = true
         pinImage.heightAnchor.constraint(equalToConstant: newImageHeight).isActive = true
         
-        //Setting height of container
-        pinContainer.heightAnchor.constraint(equalToConstant: newImageHeight + 50).isActive = true
+        
         
         
         //pinTitle
@@ -54,12 +64,20 @@ class pinDetailVC : UIViewController {
         
         
         
-        //general view settings
-        pinContainer.backgroundColor = .red
+        
+        
         
     }
     
     //****************** VARIABLES *********************
+    let scroll : UIScrollView = {
+        let scrollV = UIScrollView()
+        scrollV.translatesAutoresizingMaskIntoConstraints = false
+        scrollV.backgroundColor = .white
+        return scrollV
+    }()
+    
+    
     let pinContainer : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false

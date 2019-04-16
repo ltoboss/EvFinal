@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let layout = PinterestLayout()
         //let layout = UICollectionViewFlowLayout()
-        //window?.rootViewController = UINavigationController(rootViewController:CollectionViewController(collectionViewLayout: layout))
+        window?.rootViewController = UINavigationController(rootViewController:CollectionViewController(collectionViewLayout: layout))
         
         
         FirebaseApp.configure()

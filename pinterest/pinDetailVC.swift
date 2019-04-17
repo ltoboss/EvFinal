@@ -35,11 +35,9 @@ class pinDetailVC : UIViewController {
         scroll.contentSize.height = newImageHeight + 70
         
         //pinContainer
-        //pinContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         pinContainer.topAnchor.constraint( equalTo: scroll.topAnchor, constant: 10 ).isActive = true
         pinContainer.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
         pinContainer.heightAnchor.constraint(equalToConstant: newImageHeight + 50).isActive = true
-        //pinContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 9/10).isActive = true
         pinContainer.widthAnchor.constraint(equalTo: scroll.widthAnchor).isActive = true
         //pinContainer.backgroundColor = .red
         

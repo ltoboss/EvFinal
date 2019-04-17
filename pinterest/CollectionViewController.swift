@@ -56,13 +56,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let pinDVC = pinDetailVC()
         pinDVC.pinImage.image = imagenes[indexPath.item]
         pinDVC.pinTitle.text = pines[indexPath.item]
-        //self.navigationController?.pushViewController(pinDVC, animated: true)
+        self.navigationController?.pushViewController(pinDVC, animated: true)
         
     }
     
     func animateCell(_ collectionView: UICollectionView, indexPath : IndexPath){
         let cell = collectionView.cellForItem(at: indexPath) as! pinCell
-        cell.backgroundColor = .blue
+        //cell.backgroundColor = .blue
         let currentCellWidth = cell.frame.size.width
         let currentCellHeight = cell.frame.size.height
         //print("size width:\(cell.frame.size.width)  height:\(cell.frame.size.height)")
@@ -75,35 +75,24 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         var newImageFrame = cell.imageView1.frame
         
         
-        var zoomTopConstraint = cell.imageView1.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70)
+        var zoomTopConstraint = cell.imageView1.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 85)
         var zoomLeftConstraint = cell.imageView1.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         var zoomRightConstraint = cell.imageView1.rightAnchor.constraint(equalTo: self.view.rightAnchor)
-        //var zoomHeightConstraint = cell.imageView1.heightAnchor.constraint(equalToConstant: ((self.imagenes[indexPath.item].size.height * self.view.frame.width) / self.imagenes[indexPath.item].size.width) )
-        var zoomHeightConstraint = cell.imageView1.heightAnchor.constraint(equalToConstant: 2000 )
+        var zoomHeightConstraint = cell.imageView1.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: (self.imagenes[indexPath.item].size.height / self.imagenes[indexPath.item].size.width) )
         
-        newFrame = CGRect(x: 0, y: 10, width: (currentCellWidth * 2), height: (currentCellHeight * 2))
-        //cell.frame = newFrame
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-           // cell.animateCell(duration: 1, delay: 0, newX: (self.view.frame.width/10), newY: (17/3), newWidth: (self.view.frame.width * 0.8), newHeight: 1000)
-            
-            newImageFrame = CGRect(x: 0, y: 0, width: (self.view.frame.width * 0.8), height: 1000)
-            
-            //cell.frame = newFrame
-            //cell.imageView1.frame = newFrame//newImageFrame
-            
-            //cell.frame = newFrame
-            //cell.imageView1.frame.size.height = cell.updateCellHeight( self.view.frame.size.width, currentHeight: self.imagenes[indexPath.item].size.height, currentWidth: self.imagenes[indexPath.item].size.width)
-            //cell.alpha = 0
+        
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+           
+            cell.alpha = 0
             zoomTopConstraint.isActive = true
             zoomLeftConstraint.isActive = true
             zoomRightConstraint.isActive = true
             zoomHeightConstraint.isActive = true
-            //print()
             self.view.layoutIfNeeded()
             
         }, completion: {finished in
             cell.frame = originalFrame
-            cell.imageView1.frame = imageOriginalFrame
+            //cell.imageView1.frame = imageOriginalFrame
             cell.alpha = 1
             cell.backgroundColor = .white
             zoomTopConstraint.isActive = false

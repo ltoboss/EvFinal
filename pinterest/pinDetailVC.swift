@@ -16,7 +16,7 @@ class pinDetailVC : UIViewController {
         
         //------------- Adding elements --------------
         view.addSubview(scroll)
-        view.addSubview(pinContainer)
+        scroll.addSubview(pinContainer)
         pinContainer.addSubview(pinImage)
         pinContainer.addSubview(pinTitle)
         
@@ -32,7 +32,7 @@ class pinDetailVC : UIViewController {
         scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scroll.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        scroll.contentSize.height = 10000
+        scroll.contentSize.height = newImageHeight + 50
         
         //pinContainer
         //pinContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -58,9 +58,10 @@ class pinDetailVC : UIViewController {
     }
     
     //****************** VARIABLES *********************
-    let scroll : UIScrollView = {
+    lazy var scroll : UIScrollView = {
         let scrollV = UIScrollView()
         scrollV.translatesAutoresizingMaskIntoConstraints = false
+        scrollV.contentSize.height = 3000
         scrollV.backgroundColor = .white
         return scrollV
     }()

@@ -48,7 +48,9 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("seleccionaste \(pines[indexPath.item])")
         animateCell(collectionView, indexPath: indexPath)
-        changeScreen(indexPath: indexPath)
+        //changeScreen(indexPath: indexPath)
+        
+        
         
     }
     
@@ -62,28 +64,18 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     func animateCell(_ collectionView: UICollectionView, indexPath : IndexPath){
         let cell = collectionView.cellForItem(at: indexPath) as! pinCell
-        //cell.backgroundColor = .blue
-        let currentCellWidth = cell.frame.size.width
-        let currentCellHeight = cell.frame.size.height
-        //print("size width:\(cell.frame.size.width)  height:\(cell.frame.size.height)")
-        
-        let newImageHeight2 = (self.view.frame.size.width * cell.bounds.height) / cell.bounds.width
-        //print("++++++newImageHeight = ( \(self.view.frame.size.width) *  \(cell.bounds.height) ) / \(cell.bounds.width) = \(   ((self.view.frame.size.width * cell.bounds.height) / cell.bounds.width)  )")
-        var newFrame = cell.frame
-        let originalFrame = cell.frame
-        let imageOriginalFrame = cell.imageView1.frame
-        var newImageFrame = cell.imageView1.frame
-        
-        
+        collectionView.bringSubview(toFront: cell)
+        //cell.bringSubview(toFront: cell.imageView1)
         var zoomTopConstraint = cell.imageView1.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 85)
         var zoomLeftConstraint = cell.imageView1.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         var zoomRightConstraint = cell.imageView1.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         var zoomHeightConstraint = cell.imageView1.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: (self.imagenes[indexPath.item].size.height / self.imagenes[indexPath.item].size.width) )
         
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
            
-            cell.alpha = 0
+            //cell.alpha = 0
+            
             zoomTopConstraint.isActive = true
             zoomLeftConstraint.isActive = true
             zoomRightConstraint.isActive = true
@@ -91,7 +83,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             self.view.layoutIfNeeded()
             
         }, completion: {finished in
-            cell.frame = originalFrame
             //cell.imageView1.frame = imageOriginalFrame
             cell.alpha = 1
             cell.backgroundColor = .white
@@ -99,7 +90,11 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             zoomLeftConstraint.isActive = false
             zoomRightConstraint.isActive = false
             zoomHeightConstraint.isActive = false
+            self.changeScreen(indexPath: indexPath)
+            
         })
+        
+        
     }
     
 }

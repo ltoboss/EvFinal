@@ -57,7 +57,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         var animateTransition : Bool = true
         
         let transition = CATransition()
-        transition.duration = 0.1
+        transition.duration = 0.2
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionFade
         //transition.subtype = kCATransition
@@ -81,7 +81,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         var zoomHeightConstraint = cell.imageView1.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: (self.imagenes[indexPath.item].size.height / self.imagenes[indexPath.item].size.width) )
         
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
            
             //cell.alpha = 0
             

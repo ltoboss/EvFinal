@@ -51,15 +51,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         //changeScreen(indexPath: indexPath)
         
         
-        
     }
     
     func changeScreen(indexPath: IndexPath){
+        var animateTransition : Bool = true
         let pinDVC = pinDetailVC()
         pinDVC.pinImage.image = imagenes[indexPath.item]
         pinDVC.pinTitle.text = pines[indexPath.item]
-        self.navigationController?.pushViewController(pinDVC, animated: true)
-        
+        animateTransition = false
+        self.navigationController?.pushViewController(pinDVC, animated: animateTransition)
+        //self.present(pinDVC, animated: true, completion: nil)
     }
     
     func animateCell(_ collectionView: UICollectionView, indexPath : IndexPath){

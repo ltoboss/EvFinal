@@ -55,6 +55,14 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     func changeScreen(indexPath: IndexPath){
         var animateTransition : Bool = true
+        
+        let transition = CATransition()
+        transition.duration = 0.1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade
+        //transition.subtype = kCATransition
+        self.navigationController!.view.layer.add(transition, forKey: nil)
+        
         let pinDVC = pinDetailVC()
         pinDVC.pinImage.image = imagenes[indexPath.item]
         pinDVC.pinTitle.text = pines[indexPath.item]

@@ -123,6 +123,8 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         if error != nil { print(error); return }
                         guard let uid = user2?.uid else { print(); return }
                         
+                        userL?.uid = uid
+                        
                         //sucessfully
                         var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
                         let values = ["age" :age, "email": email]

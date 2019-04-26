@@ -11,6 +11,7 @@
 		552DFA4B2254977D008D07C8 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DFA4A2254977D008D07C8 /* CollectionViewController.swift */; };
 		553AE510225FBE5A0069A349 /* pinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553AE50F225FBE5A0069A349 /* pinterestLayout.swift */; };
 		554B03AE22653D8F005B65BA /* pinDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554B03AD22653D8F005B65BA /* pinDetailVC.swift */; };
+		5588B5C82272CEAA0063D3EC /* UploadImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */; };
 		55AFC85322323BE9003E01FD /* datosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85222323BE9003E01FD /* datosViewController.swift */; };
 		55AFC85522324F3F003E01FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85422324F3F003E01FD /* User.swift */; };
 		F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF53A2232096B009FBCD2 /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		552DFA4A2254977D008D07C8 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		553AE50F225FBE5A0069A349 /* pinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinterestLayout.swift; sourceTree = "<group>"; };
 		554B03AD22653D8F005B65BA /* pinDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinDetailVC.swift; sourceTree = "<group>"; };
+		5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageVC.swift; sourceTree = "<group>"; };
 		55AFC85222323BE9003E01FD /* datosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datosViewController.swift; sourceTree = "<group>"; };
 		55AFC85422324F3F003E01FD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		71E65ED5B3EA09CA0C46E3E3 /* Pods_pinterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pinterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,7 +143,6 @@
 			children = (
 				F3694FB12256D78A00757C7D /* TableViewSample.swift */,
 				F34FF53A2232096B009FBCD2 /* AppDelegate.swift */,
-				F34FF53C2232096B009FBCD2 /* ViewController.swift */,
 				55AFC85222323BE9003E01FD /* datosViewController.swift */,
 				F3632FB2223B3B5D0083374B /* signInViewController.swift */,
 				552DFA4A2254977D008D07C8 /* CollectionViewController.swift */,
@@ -154,6 +155,8 @@
 				F34FF5412232096B009FBCD2 /* Assets.xcassets */,
 				F34FF5432232096B009FBCD2 /* LaunchScreen.storyboard */,
 				F34FF5462232096B009FBCD2 /* Info.plist */,
+				F34FF53C2232096B009FBCD2 /* ViewController.swift */,
+				5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */,
 			);
 			path = pinterest;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				554B03AE22653D8F005B65BA /* pinDetailVC.swift in Sources */,
 				55AFC85322323BE9003E01FD /* datosViewController.swift in Sources */,
 				F3632FB3223B3B5D0083374B /* signInViewController.swift in Sources */,
+				5588B5C82272CEAA0063D3EC /* UploadImageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

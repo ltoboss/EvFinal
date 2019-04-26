@@ -133,11 +133,9 @@ class ViewController: UIViewController {
         ub.setTitle("Iniciar sesion", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
-        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)//Esta linea la metiste TU
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
         return ub
     }()
-    
-    //let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
     
     //****************** FUNCIONES *********************
     

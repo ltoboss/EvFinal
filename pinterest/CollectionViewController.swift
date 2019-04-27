@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellId = "cellId"
@@ -21,7 +22,24 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         collectionView?.backgroundColor = .white
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
+        
+        
+        Database.database().reference().child("imagesURLS").observe(.childAdded)
+        { (snapshot) in
+            print(snapshot.value)
+        }
+        
+        
+        
+        
+        
     }
+    
+    var imageReference : StorageReference {
+        return Storage.storage().reference().child("MEMES")
+    }
+    
+    
     
     let pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
     let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
@@ -35,11 +53,39 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         
         cell.label1.text = pines[indexPath.item]
-        let imageToUse : UIImage = imagenes[indexPath.item]
+        
+        
+        
+        
+        //downloadImage(withURL: urlTest!){ image in imageToUse = image!}
+        
+        
+        var imageToUse : UIImage = imagenes[indexPath.item]
+        
+        //imageToUse = downloadImagen()
+        
         cell.imageView1.image = imageToUse
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
         return cell
     }
+    
+    func downloadImagen() -> UIImage {
+        var imagen = UIImage()
+        let downloadImageRef = imageReference.child("C3B43078-3FA8-4589-8415-B5D107901B87.jpg")
+        
+        let downloadtask = downloadImageRef.getData(maxSize: 1024 * 1024 * 12){ (data, error) in
+            
+            if let data = data {
+                let image  = UIImage(data: data)
+                imagen = image!
+            }
+            print(error ?? "NO ERROR")
+        }
+        downloadtask.resume()
+        return imagen
+    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

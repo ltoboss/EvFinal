@@ -79,7 +79,7 @@ class pinCell : UICollectionViewCell {
     //Imagen
     let imageView1 : UIImageView = {
         let imageView2 = UIImageView()
-        imageView2.image = #imageLiteral(resourceName: "pinterestPin")
+        imageView2.image = #imageLiteral(resourceName: "paisaje")
         imageView2.translatesAutoresizingMaskIntoConstraints = false
         return imageView2
     }()

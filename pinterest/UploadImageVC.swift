@@ -76,10 +76,14 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     
     @objc func uploadImage(){
-        let storageRef = Storage.storage().reference().child("MEMES").child("miimagen.jpg")
+        let imageName = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("MEMES").child("\(imageName).jpg")
+        
+        var metaData = StorageMetadata()
+        metaData.customMetadata = [ "user uuid" : userL?.uid, "message" : "imagen de prueba", "url" : "1223"] as! [String : String]
         
         if let uploadData = UIImageJPEGRepresentation(imageToUpload.image!, 300){
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+            storageRef.putData(uploadData, metadata: metaData, completion: { (metadata, error) in
                 if error != nil {
                     print(error)
                     return

@@ -7,12 +7,25 @@
 //
 
 import UIKit
-
+import Firebase
 
 class pinCell : UICollectionViewCell {
     override init (frame: CGRect){
         super.init(frame: frame)
         setup()
+    }
+    
+    /*init(snapshot: DataSnapshot){
+        super.init()
+        let snapFull = snapshot.value as! [String : Any]
+    }*/
+    
+    var imageDownloadURL : String?
+    
+    func setSnapValues(snapshot: DataSnapshot){
+        let snapFull = snapshot.value as! [String : Any]
+        //CUIDADO te falta Caption. Revisar si no afecta
+        self.imageDownloadURL = snapFull["url"] as! String ?? ""
     }
     
     func setup(){
@@ -77,7 +90,7 @@ class pinCell : UICollectionViewCell {
     
     
     //Imagen
-    let imageView1 : UIImageView = {
+    var imageView1 : UIImageView = {
         let imageView2 = UIImageView()
         imageView2.image = #imageLiteral(resourceName: "paisaje")
         imageView2.translatesAutoresizingMaskIntoConstraints = false

@@ -12,6 +12,8 @@ import Firebase
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellId = "cellId"
     
+    var imagensCells = [pinCell]()
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -26,7 +28,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         Database.database().reference().child("imagesURLS").observe(.childAdded)
         { (snapshot) in
+            let newPinCell = pinCell()
+            newPinCell.setSnapValues(snapshot: snapshot)
+            newPinCell.backgroundColor = .red
+            self.imagensCells.append(newPinCell)
             print(snapshot.value)
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+            
+            
         }
         
         
@@ -46,7 +57,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pines.count
+        return imagensCells.count //pines.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

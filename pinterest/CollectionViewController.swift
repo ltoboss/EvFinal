@@ -49,11 +49,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 
                 for pines in snapshot.children.allObjects as! [DataSnapshot]{
                     let pinObject = pines.value as? [String: AnyObject]
-                    let pinName = pinObject?["nombre"]
-                    let pinType = pinObject?["type"]
-                    let pinURL = pinObject?["url"]
-                    self.urlsList.append((pinURL as! String?)!)
-                    print("nuevo URL: \(pinURL)")
+                    let pinName = pinObject?["nombre"] as! String!
+                    let pinType = pinObject?["type"] as! String!
+                    //let pinURL = pinObject?["url"]
+                    let imageToDownload = pinName! + "." + pinType!
+                    self.urlsList.append(imageToDownload)
+                    print("nueva imagen: \(imageToDownload)")
                 }
                 
             }
@@ -77,7 +78,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagensCells.count //pines.count
+        return pines.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,24 +100,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
         return cell
     }
-    
-    func downloadImagen() -> UIImage {
-        var imagen = UIImage()
-        let downloadImageRef = imageReference.child("C3B43078-3FA8-4589-8415-B5D107901B87.jpg")
-        
-        let downloadtask = downloadImageRef.getData(maxSize: 1024 * 1024 * 12){ (data, error) in
-            
-            if let data = data {
-                let image  = UIImage(data: data)
-                imagen = image!
-            }
-            print(error ?? "NO ERROR")
-        }
-        downloadtask.resume()
-        return imagen
-    }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

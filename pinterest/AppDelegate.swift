@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          //let layout = UICollectionViewFlowLayout()
         //window?.rootViewController = UINavigationController(rootViewController:CollectionViewController(collectionViewLayout: layout))
         
-        window?.rootViewController = UINavigationController(rootViewController: testDownloadImage())
+        //window?.rootViewController = UINavigationController(rootViewController: testDownloadImage())
         
         
         

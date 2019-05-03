@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          //let layout = UICollectionViewFlowLayout()
         //window?.rootViewController = UINavigationController(rootViewController:CollectionViewController(collectionViewLayout: layout))
         
+        window?.rootViewController = UINavigationController(rootViewController: testDownloadImage())
+        
+        
         
         FirebaseApp.configure()
         // Override point for customization after application launch.

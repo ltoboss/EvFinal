@@ -14,6 +14,7 @@
 		5588B5C82272CEAA0063D3EC /* UploadImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */; };
 		55AFC85322323BE9003E01FD /* datosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85222323BE9003E01FD /* datosViewController.swift */; };
 		55AFC85522324F3F003E01FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85422324F3F003E01FD /* User.swift */; };
+		55EDD644227C2CB000B3DCFC /* testDownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EDD643227C2CB000B3DCFC /* testDownloadImage.swift */; };
 		F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF53A2232096B009FBCD2 /* AppDelegate.swift */; };
 		F34FF53D2232096B009FBCD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF53C2232096B009FBCD2 /* ViewController.swift */; };
 		F34FF5402232096B009FBCD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34FF53E2232096B009FBCD2 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageVC.swift; sourceTree = "<group>"; };
 		55AFC85222323BE9003E01FD /* datosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datosViewController.swift; sourceTree = "<group>"; };
 		55AFC85422324F3F003E01FD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		55EDD643227C2CB000B3DCFC /* testDownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testDownloadImage.swift; sourceTree = "<group>"; };
 		71E65ED5B3EA09CA0C46E3E3 /* Pods_pinterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pinterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F445D124834B72FB421CF /* Pods-pinterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pinterest.debug.xcconfig"; path = "Target Support Files/Pods-pinterest/Pods-pinterest.debug.xcconfig"; sourceTree = "<group>"; };
 		F34FF5372232096B009FBCD2 /* pinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pinterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,8 +157,9 @@
 				F34FF5412232096B009FBCD2 /* Assets.xcassets */,
 				F34FF5432232096B009FBCD2 /* LaunchScreen.storyboard */,
 				F34FF5462232096B009FBCD2 /* Info.plist */,
-				F34FF53C2232096B009FBCD2 /* ViewController.swift */,
 				5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */,
+				F34FF53C2232096B009FBCD2 /* ViewController.swift */,
+				55EDD643227C2CB000B3DCFC /* testDownloadImage.swift */,
 			);
 			path = pinterest;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55AFC85522324F3F003E01FD /* User.swift in Sources */,
+				55EDD644227C2CB000B3DCFC /* testDownloadImage.swift in Sources */,
 				F3694FB02256D46E00757C7D /* pinCell.swift in Sources */,
 				F34FF53D2232096B009FBCD2 /* ViewController.swift in Sources */,
 				F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */,

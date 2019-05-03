@@ -49,7 +49,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 
                 for pines in snapshot.children.allObjects as! [DataSnapshot]{
                     let pinObject = pines.value as? [String: AnyObject]
-                    //let pinName = pinObject?["nombre"]
+                    let pinName = pinObject?["nombre"]
+                    let pinType = pinObject?["type"]
                     let pinURL = pinObject?["url"]
                     self.urlsList.append((pinURL as! String?)!)
                     print("nuevo URL: \(pinURL)")

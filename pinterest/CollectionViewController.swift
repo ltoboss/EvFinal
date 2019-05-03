@@ -13,6 +13,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     let cellId = "cellId"
     
     var imagensCells = [pinCell]()
+    var urlsList = [String]()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
         
-        
+        /*
         Database.database().reference().child("imagesURLS").observe(.childAdded)
         { (snapshot) in
             let newPinCell = pinCell()
@@ -38,7 +39,25 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             }
             
             
-        }
+        }*/
+        
+        let URLSRef = Database.database().reference().child("imagesURLS")
+        URLSRef.observe(DataEventType.value, with: {(snapshot)  in
+            if snapshot.childrenCount > 0 {
+                //self.imagensCells.removeAll()
+                self.urlsList.removeAll()
+                
+                for pines in snapshot.children.allObjects as! [DataSnapshot]{
+                    let pinObject = pines.value as? [String: AnyObject]
+                    //let pinName = pinObject?["nombre"]
+                    let pinURL = pinObject?["url"]
+                    self.urlsList.append((pinURL as! String?)!)
+                    print("nuevo URL: \(pinURL)")
+                }
+                
+            }
+            
+        })
         
         
         

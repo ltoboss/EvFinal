@@ -90,8 +90,11 @@ class singInViewController: UIViewController {
                     userL?.uid = user!.user.uid
                     print("uid es \(userL?.uid)")
                     let uploadVC = UploadImageVC()
-                    self.navigationController?.pushViewController(uploadVC, animated: true)
+                    //self.navigationController?.pushViewController(uploadVC, animated: true)
                     //self.logInButton.setTitle("ya salio", for: .normal)
+                    
+                    self.navigationController?.pushViewController(collectionViewC, animated: true)
+                    
                 }
             }
             

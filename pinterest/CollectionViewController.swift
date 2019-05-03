@@ -54,7 +54,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                     //let pinURL = pinObject?["url"]
                     let imageToDownload = pinName! + "." + pinType!
                     self.urlsList.append(imageToDownload)
-                    print("nueva imagen: \(imageToDownload)")
+                    print("-------------------nueva imagen: \(imageToDownload)")
                 }
                 
             }

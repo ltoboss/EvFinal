@@ -12,6 +12,7 @@ import Firebase
 var urlsList = [String]()
 var storageRef = Storage.storage().reference()
 var imagenesArray = [UIImage]()
+var messagesArray = [String]()
 
 var userL:userLocal? //= userLocal()
 var signInScreen:Int = 0

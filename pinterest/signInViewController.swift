@@ -127,12 +127,13 @@ class singInViewController: UIViewController {
                     var pinName = pinObject?["nombre"] as! String!
                     var pinType = pinObject?["type"] as! String!
                     //let pinURL = pinObject?["url"]
-                    
+                    var currentMessage = pinObject?["message"] as! String!
                     //pinName = "1A437F5F-3A79-450E-936D-D1CE65DF7263"
-                    
+                    messagesArray.append(currentMessage!)
                     var imageToDownload = pinName! + "." + pinType!
                     //imageToDownload = "A890070B-6C88-4B39-92A9-A84DC26F755D.jpg"
                     urlsList.append(imageToDownload)
+                    
                     storageRef = Storage.storage().reference().child("MEMES/\(imageToDownload)")
                     storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
                         if let error = error {

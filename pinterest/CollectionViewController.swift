@@ -55,9 +55,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     
     
-    let pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
+    //let pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
     //let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
     let imagenes = imagenesArray
+    let pines = messagesArray
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("++++ Aqui cargamos numberOfItems")
@@ -93,7 +94,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         //var imageToUse : UIImage = imagenes[indexPath.item]
         
         
-        cell.imageView1.image = imagenesArray[indexPath.item]
+        cell.imageView1.image = imagenes[indexPath.item]
         
         //var storageRef = Storage.storage().reference().child("MEMES/5A70E10D-8500-45C0-8405-31AF2105E644.jpg")
         

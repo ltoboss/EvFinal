@@ -129,6 +129,22 @@ class singInViewController: UIViewController {
                     //let pinURL = pinObject?["url"]
                     let imageToDownload = pinName! + "." + pinType!
                     urlsList.append(imageToDownload)
+                    storageRef = Storage.storage().reference().child("MEMES/\(imageToDownload)")
+                    storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            // Uh-oh, an error occurred!
+                            print("-------- hubo un error al descargar. Fue \(error)")
+                        } else {
+                            // Data for "images/island.jpg" is returned
+                            let image = UIImage(data: data!)
+                            imagenesArray.append(image as! UIImage)
+                            //self.imagenesArray.append(image!)
+                            print("++++++++ la imagen se llama \(imageToDownload)")
+                            
+                        }
+                    }
+                    
+                    
                     print("-------------------nueva imagen: \(imageToDownload)")
                     print("====== cuenta nueva de  urlsList \(urlsList.count)")
                     
@@ -137,6 +153,30 @@ class singInViewController: UIViewController {
             }
             
         })
+        
+        
+        
+         /*
+         for currentImage in urlsList {
+         
+         let storageRef = Storage.storage().reference().child("MEMES/\(currentImage)")
+         storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
+         if let error = error {
+         // Uh-oh, an error occurred!
+         print("-------- hubo un error al descargar. Fue \(error)")
+         } else {
+         // Data for "images/island.jpg" is returned
+         let image = UIImage(data: data!)
+         self.imagenesArray.append(image as! UIImage)
+         //self.imagenesArray.append(image!)
+         print("++++++++ la imagen se llama \(currentImage)")
+         
+         }
+         }
+         
+         }*/
+ 
+        
         
         return urlsList.count
     }

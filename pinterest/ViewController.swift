@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 
 var urlsList = [String]()
+var storageRef = Storage.storage().reference()
+var imagenesArray = [UIImage]()
+
 var userL:userLocal? //= userLocal()
 var signInScreen:Int = 0
 enum screens:String {

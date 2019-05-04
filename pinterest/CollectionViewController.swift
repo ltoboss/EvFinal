@@ -54,8 +54,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     
     let pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
-    let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
-    
+    //let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
+    let imagenes = imagenesArray
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("++++ Aqui cargamos numberOfItems")
@@ -68,7 +68,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         
         cell.label1.text = pines[indexPath.item]
-        
+        /*
         let storageRef = Storage.storage().reference().child("MEMES/\(urlsList[indexPath.item])")
         storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
             if let error = error {
@@ -78,18 +78,20 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 // Data for "images/island.jpg" is returned
                 let image = UIImage(data: data!)
                 cell.imageView1.image = image as! UIImage
+                //self.imagenesArray.append(image!)
                 print("++++++++ la imagen se llama \(urlsList[indexPath.item])")
+                
             }
-        }
+        }*/
         
         
         //downloadImage(withURL: urlTest!){ image in imageToUse = image!}
         
         
-        var imageToUse : UIImage = imagenes[indexPath.item]
+        //var imageToUse : UIImage = imagenes[indexPath.item]
         
         
-        
+        cell.imageView1.image = imagenesArray[indexPath.item]
         
         //var storageRef = Storage.storage().reference().child("MEMES/5A70E10D-8500-45C0-8405-31AF2105E644.jpg")
         
@@ -97,7 +99,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         //imageToUse = downloadImagen()
         
-        cell.imageView1.image = imageToUse
+        //cell.imageView1.image = imageToUse
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
         
         return cell
@@ -176,6 +178,7 @@ extension CollectionViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
         //print("sacamos height de imagen \(indexPath.item)")
+        print("sacamos height para celda")
         return imagenes[indexPath.item].size.height
     }
     

@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: ViewController())
         
         
-        window?.rootViewController = UINavigationController(rootViewController: UploadImageVC())
+        //window?.rootViewController = UINavigationController(rootViewController: UploadImageVC())
         //window?.rootViewController = UINavigationController(rootViewController: TableViewSample())
         
         //var layout = PinterestLayout()

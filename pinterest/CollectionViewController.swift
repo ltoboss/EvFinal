@@ -22,15 +22,17 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     var URLSRef : DatabaseReference = Database.database().reference().child("imagesURLS")
     
     
-    
+    @objc func uploadNewImage(){
+        let uploadVC = UploadImageVC()
+        self.navigationController?.pushViewController(uploadVC, animated: true)
+    }
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
         
         //loadPines()
-        
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "UploadImage", style: .plain, target: self, action: #selector(uploadNewImage))
         
         
         

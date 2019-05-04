@@ -124,22 +124,28 @@ class singInViewController: UIViewController {
                 
                 for pines in snapshot.children.allObjects as! [DataSnapshot]{
                     let pinObject = pines.value as? [String: AnyObject]
-                    let pinName = pinObject?["nombre"] as! String!
-                    let pinType = pinObject?["type"] as! String!
+                    var pinName = pinObject?["nombre"] as! String!
+                    var pinType = pinObject?["type"] as! String!
                     //let pinURL = pinObject?["url"]
-                    let imageToDownload = pinName! + "." + pinType!
+                    
+                    //pinName = "1A437F5F-3A79-450E-936D-D1CE65DF7263"
+                    
+                    var imageToDownload = pinName! + "." + pinType!
+                    //imageToDownload = "A890070B-6C88-4B39-92A9-A84DC26F755D.jpg"
                     urlsList.append(imageToDownload)
                     storageRef = Storage.storage().reference().child("MEMES/\(imageToDownload)")
                     storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
                         if let error = error {
                             // Uh-oh, an error occurred!
-                            print("-------- hubo un error al descargar. Fue \(error)")
+                            print("-------- hubo un error al descargar \(imageToDownload). el error fue \(error)")
                         } else {
                             // Data for "images/island.jpg" is returned
                             let image = UIImage(data: data!)
                             imagenesArray.append(image as! UIImage)
                             //self.imagenesArray.append(image!)
                             print("++++++++ la imagen se llama \(imageToDownload)")
+                            
+                            
                             
                         }
                     }

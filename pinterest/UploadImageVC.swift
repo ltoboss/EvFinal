@@ -63,6 +63,17 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         return ub
     }()
     
+    
+    let pinMessageTextField : UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.placeholder = "mensaje..."
+        tf.backgroundColor = .white
+        tf.text = ""
+        return tf
+    }()
+    
+    
     // -------------- Al presionar el boton --------------------
     @objc func handleButton(_ sender:UIButton){
         let picker = UIImagePickerController()
@@ -78,17 +89,28 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     @objc func uploadImage(){
         let imageName = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child("MEMES").child("\(imageName).jpg")
+        var UID = "123"//userL?.uid
         
         var metaData = StorageMetadata()
-        metaData.customMetadata = [ "user uuid" : userL?.uid, "message" : "imagen de prueba", "url" : "1223"] as! [String : String]
+        metaData.customMetadata = [ "user uuid" : UID, "message" : "imagen de prueba", "url" : "1223"] as! [String : String]
         
         if let uploadData = UIImageJPEGRepresentation(imageToUpload.image!, 300){
-            storageRef.putData(uploadData, metadata: metaData, completion: { (metadata, error) in
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
                     print(error)
                     return
                 }
-                print(metadata)
+                //print(metadata)
+                
+                
+                var ref = Database.database().reference(fromURL: "https://pinterest3-7db31.firebaseio.com/")
+                let values = ["nombre" :imageName, "type": "jpg", "uuid" : UID, "message" : self.pinMessageTextField.text as! String, "url" : "123"]
+                let usersRef = ref.child("imagesURLS").child(imageName)
+                
+                usersRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef:DatabaseReference?) in
+                    if  error != nil { print(error) }
+                })
+                
             })
         }
         

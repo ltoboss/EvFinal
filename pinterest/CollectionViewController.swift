@@ -69,7 +69,18 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         cell.label1.text = pines[indexPath.item]
         
-        
+        let storageRef = Storage.storage().reference().child("MEMES/\(urlsList[indexPath.item])")
+        storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("-------- hubo un error al descargar \(indexPath.item). Fue \(error)")
+            } else {
+                // Data for "images/island.jpg" is returned
+                let image = UIImage(data: data!)
+                cell.imageView1.image = image as! UIImage
+                print("++++++++ la imagen se llama \(urlsList[indexPath.item])")
+            }
+        }
         
         
         //downloadImage(withURL: urlTest!){ image in imageToUse = image!}

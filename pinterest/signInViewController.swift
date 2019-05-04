@@ -83,22 +83,62 @@ class singInViewController: UIViewController {
                     //self.logInButton.setTitle("login no salio", for: .normal)
                     
                 } else {
-                    print("login exitoso")
+                    print("++++++++ login exitoso")
                     let layout = PinterestLayout()
+                    //self.loadPines()
                     let collectionViewC = CollectionViewController(collectionViewLayout: layout)
                     //self.navigationController?.pushViewController(collectionViewC, animated: true)
                     userL?.uid = user!.user.uid
                     print("uid es \(userL?.uid)")
+                    
+                    
+                    
+                    
                     let uploadVC = UploadImageVC()
                     //self.navigationController?.pushViewController(uploadVC, animated: true)
                     //self.logInButton.setTitle("ya salio", for: .normal)
                     
-                    self.navigationController?.pushViewController(collectionViewC, animated: true)
-                    
+                    if self.loadPines() > 0 {
+                        self.navigationController?.pushViewController(collectionViewC, animated: true)
+                        
+                    }
                 }
             }
             
         }
+    }
+    
+    
+    //================== Cargar datos de BD
+    func loadPines() -> Int {
+        let URLSRef = Database.database().reference().child("imagesURLS")
+        
+        //print("++++++probar load aqui")
+        URLSRef.observe(DataEventType.value, with: {(snapshot)  in
+            if snapshot.childrenCount > 0 {
+                //print("aqui ya tenemos el snapshot")
+                
+                
+                //self.imagensCells.removeAll()
+                urlsList.removeAll()
+                
+                for pines in snapshot.children.allObjects as! [DataSnapshot]{
+                    let pinObject = pines.value as? [String: AnyObject]
+                    let pinName = pinObject?["nombre"] as! String!
+                    let pinType = pinObject?["type"] as! String!
+                    //let pinURL = pinObject?["url"]
+                    let imageToDownload = pinName! + "." + pinType!
+                    urlsList.append(imageToDownload)
+                    print("-------------------nueva imagen: \(imageToDownload)")
+                    print("====== cuenta nueva de  urlsList \(urlsList.count)")
+                    
+                }
+                
+            }
+            
+        })
+        
+        return urlsList.count
     }
     
     

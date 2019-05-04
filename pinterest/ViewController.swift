@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+var urlsList = [String]()
 var userL:userLocal? //= userLocal()
 var signInScreen:Int = 0
 enum screens:String {

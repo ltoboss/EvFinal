@@ -13,11 +13,29 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     let cellId = "cellId"
     
     var imagensCells = [pinCell]()
-    var urlsList = [String]()
+    //var urlsList = [String]()
+    
+    func testFunc(){
+        //print("++++++ ejecutamos testFunc")
+    }
+    
+    var URLSRef : DatabaseReference = Database.database().reference().child("imagesURLS")
+    
+    
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        
+        //loadPines()
+        
+        
+        
+        
+        
+        
+        //print("++++ Aqui cargamos viewDIdLoad")
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
@@ -26,45 +44,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
         
-        /*
-        Database.database().reference().child("imagesURLS").observe(.childAdded)
-        { (snapshot) in
-            let newPinCell = pinCell()
-            newPinCell.setSnapValues(snapshot: snapshot)
-            newPinCell.backgroundColor = .red
-            self.imagensCells.append(newPinCell)
-            print(snapshot.value)
-            DispatchQueue.main.async {
-                self.collectionView?.reloadData()
-            }
-            
-            
-        }*/
-        
-        let URLSRef = Database.database().reference().child("imagesURLS")
-        URLSRef.observe(DataEventType.value, with: {(snapshot)  in
-            if snapshot.childrenCount > 0 {
-                //self.imagensCells.removeAll()
-                self.urlsList.removeAll()
-                
-                for pines in snapshot.children.allObjects as! [DataSnapshot]{
-                    let pinObject = pines.value as? [String: AnyObject]
-                    let pinName = pinObject?["nombre"] as! String!
-                    let pinType = pinObject?["type"] as! String!
-                    //let pinURL = pinObject?["url"]
-                    let imageToDownload = pinName! + "." + pinType!
-                    self.urlsList.append(imageToDownload)
-                    print("-------------------nueva imagen: \(imageToDownload)")
-                }
-                
-            }
-            
-        })
-        
-        
-        
-        
-        
+        self.collectionView?.reloadData()
     }
     
     var imageReference : StorageReference {
@@ -78,10 +58,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pines.count
+        print("++++ Aqui cargamos numberOfItems")
+        //print("=========== la cuenta de urlsList es \(urlsList.count)")
+        return urlsList.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //print("++++ Aqui cargamos cellforItemAt")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! pinCell
         
         cell.label1.text = pines[indexPath.item]
@@ -94,14 +77,23 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         var imageToUse : UIImage = imagenes[indexPath.item]
         
+        
+        
+        
+        //var storageRef = Storage.storage().reference().child("MEMES/5A70E10D-8500-45C0-8405-31AF2105E644.jpg")
+        
+        
+        
         //imageToUse = downloadImagen()
         
         cell.imageView1.image = imageToUse
         cell.imageView1.translatesAutoresizingMaskIntoConstraints = false
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        //print("++++ Aqui cargamos inserForSectionAt")
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     

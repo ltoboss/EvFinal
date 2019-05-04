@@ -146,8 +146,6 @@
 				F3694FB12256D78A00757C7D /* TableViewSample.swift */,
 				F34FF53A2232096B009FBCD2 /* AppDelegate.swift */,
 				55AFC85222323BE9003E01FD /* datosViewController.swift */,
-				F3632FB2223B3B5D0083374B /* signInViewController.swift */,
-				552DFA4A2254977D008D07C8 /* CollectionViewController.swift */,
 				554B03AD22653D8F005B65BA /* pinDetailVC.swift */,
 				55AFC85422324F3F003E01FD /* User.swift */,
 				F3694FAF2256D46E00757C7D /* pinCell.swift */,
@@ -159,6 +157,8 @@
 				F34FF5462232096B009FBCD2 /* Info.plist */,
 				5588B5C72272CEAA0063D3EC /* UploadImageVC.swift */,
 				F34FF53C2232096B009FBCD2 /* ViewController.swift */,
+				F3632FB2223B3B5D0083374B /* signInViewController.swift */,
+				552DFA4A2254977D008D07C8 /* CollectionViewController.swift */,
 				55EDD643227C2CB000B3DCFC /* testDownloadImage.swift */,
 			);
 			path = pinterest;

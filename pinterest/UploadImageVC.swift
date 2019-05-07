@@ -13,9 +13,12 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         view.addSubview(chooseButton)
         view.addSubview(uploadButton)
         view.addSubview(imageToUpload)
+        
         
         chooseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         chooseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 250).isActive = true

@@ -145,18 +145,10 @@ class singInViewController: UIViewController {
                             imagenesArray.append(image as! UIImage)
                             //self.imagenesArray.append(image!)
                             print("++++++++ la imagen se llama \(imageToDownload)")
-                            
-                            
-                            
                         }
                     }
-                    
-                    
-                    print("-------------------nueva imagen: \(imageToDownload)")
-                    print("====== cuenta nueva de  urlsList \(urlsList.count)")
-                    
+                    //print("-------------------nueva imagen: \(imageToDownload) cuenta nueva de  urlsList \(urlsList.count)")
                 }
-                
             }
             
         })

@@ -117,9 +117,89 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             })
         }
         
+        let layout = PinterestLayout()
+        //self.loadPines()
+        let collectionViewC = CollectionViewController(collectionViewLayout: layout)
         
+        if self.loadPines() > 0 {
+            self.navigationController?.pushViewController(collectionViewC, animated: true)
+            
+        }
         
     }
+    
+    
+    //================== Cargar datos de BD
+    func loadPines() -> Int {
+        let URLSRef = Database.database().reference().child("imagesURLS")
+        
+        //print("++++++probar load aqui")
+        URLSRef.observe(DataEventType.value, with: {(snapshot)  in
+            if snapshot.childrenCount > 0 {
+                //print("aqui ya tenemos el snapshot")
+                
+                
+                //self.imagensCells.removeAll()
+                urlsList.removeAll()
+                
+                for pines in snapshot.children.allObjects as! [DataSnapshot]{
+                    let pinObject = pines.value as? [String: AnyObject]
+                    var pinName = pinObject?["nombre"] as! String!
+                    var pinType = pinObject?["type"] as! String!
+                    //let pinURL = pinObject?["url"]
+                    var currentMessage = pinObject?["message"] as! String!
+                    //pinName = "1A437F5F-3A79-450E-936D-D1CE65DF7263"
+                    messagesArray.append(currentMessage!)
+                    var imageToDownload = pinName! + "." + pinType!
+                    //imageToDownload = "A890070B-6C88-4B39-92A9-A84DC26F755D.jpg"
+                    urlsList.append(imageToDownload)
+                    
+                    storageRef = Storage.storage().reference().child("MEMES/\(imageToDownload)")
+                    storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            // Uh-oh, an error occurred!
+                            print("-------- hubo un error al descargar \(imageToDownload). el error fue \(error)")
+                        } else {
+                            // Data for "images/island.jpg" is returned
+                            let image = UIImage(data: data!)
+                            imagenesArray.append(image as! UIImage)
+                            //self.imagenesArray.append(image!)
+                            print("++++++++ la imagen se llama \(imageToDownload)")
+                        }
+                    }
+                    //print("-------------------nueva imagen: \(imageToDownload) cuenta nueva de  urlsList \(urlsList.count)")
+                }
+            }
+            
+        })
+        
+        
+        
+        /*
+         for currentImage in urlsList {
+         
+         let storageRef = Storage.storage().reference().child("MEMES/\(currentImage)")
+         storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
+         if let error = error {
+         // Uh-oh, an error occurred!
+         print("-------- hubo un error al descargar. Fue \(error)")
+         } else {
+         // Data for "images/island.jpg" is returned
+         let image = UIImage(data: data!)
+         self.imagenesArray.append(image as! UIImage)
+         //self.imagenesArray.append(image!)
+         print("++++++++ la imagen se llama \(currentImage)")
+         
+         }
+         }
+         
+         }*/
+        
+        
+        
+        return urlsList.count
+    }
+    
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

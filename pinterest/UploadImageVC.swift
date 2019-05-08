@@ -18,25 +18,28 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         view.addSubview(chooseButton)
         view.addSubview(uploadButton)
         view.addSubview(imageToUpload)
-        
+        view.addSubview(pinMessageTextField)
         
         chooseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        chooseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 250).isActive = true
+        chooseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 210).isActive = true
         chooseButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         chooseButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
         uploadButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        uploadButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200).isActive = true
+        uploadButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 160).isActive = true
         uploadButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         uploadButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
         
-        imageToUpload.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
+        imageToUpload.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60).isActive = true
         imageToUpload.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageToUpload.widthAnchor.constraint(equalToConstant: 300).isActive = true
         imageToUpload.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
-        
+        pinMessageTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pinMessageTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 250).isActive = true
+        pinMessageTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        pinMessageTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
     }
     

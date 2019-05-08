@@ -46,7 +46,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = activeScreen.rawValue
         tf.backgroundColor = .white
-        tf.text = "usuario55@gmail.com"
+        //tf.text = "usuario55@gmail.com"
         return tf
     }()
     

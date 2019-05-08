@@ -94,8 +94,6 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                         
                         if let error = error { print(error.localizedDescription) }
                         else if let providers = providers {
-                            //print(providers)
-                            print("Ocupado amigo")
                             self.navigationController?.pushViewController(signViewC, animated: true)
                         } else {
                             print("Disponible")

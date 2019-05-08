@@ -84,9 +84,7 @@ class singInViewController: UIViewController {
                     
                 } else {
                     print("++++++++ login exitoso")
-                    let layout = PinterestLayout()
-                    //self.loadPines()
-                    let collectionViewC = CollectionViewController(collectionViewLayout: layout)
+                    
                     //self.navigationController?.pushViewController(collectionViewC, animated: true)
                     userL?.uid = user!.user.uid
                     print("uid es \(userL?.uid)")
@@ -98,15 +96,34 @@ class singInViewController: UIViewController {
                     //self.navigationController?.pushViewController(uploadVC, animated: true)
                     //self.logInButton.setTitle("ya salio", for: .normal)
                     
-                    if self.loadPines() > 0 {
+                    self.loadPines()
+                    
+                    /*if self.loadPines() > 0 {
+                        let layout = PinterestLayout()
+                        let collectionViewC = CollectionViewController(collectionViewLayout: layout)
                         self.navigationController?.pushViewController(collectionViewC, animated: true)
-                        
-                    }
+                    }*/
+                    
+                    
+                    
+                    
+                    
+                    
                 }
             }
             
         }
     }
+    
+    
+    
+    func run(after seconds: Int, completion: @escaping () -> Void){
+        let deadline = DispatchTime.now() + .seconds(seconds)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            completion()
+        }
+    }
+    
     
     
     //================== Cargar datos de BD
@@ -118,17 +135,15 @@ class singInViewController: UIViewController {
             if snapshot.childrenCount > 0 {
                 //print("aqui ya tenemos el snapshot")
                 
-                
-                //self.imagensCells.removeAll()
+                imagenesArray.removeAll()
                 urlsList.removeAll()
+                messagesArray.removeAll()
                 
                 for pines in snapshot.children.allObjects as! [DataSnapshot]{
                     let pinObject = pines.value as? [String: AnyObject]
                     var pinName = pinObject?["nombre"] as! String!
                     var pinType = pinObject?["type"] as! String!
-                    //let pinURL = pinObject?["url"]
                     var currentMessage = pinObject?["message"] as! String!
-                    //pinName = "1A437F5F-3A79-450E-936D-D1CE65DF7263"
                     messagesArray.append(currentMessage!)
                     var imageToDownload = pinName! + "." + pinType!
                     //imageToDownload = "A890070B-6C88-4B39-92A9-A84DC26F755D.jpg"
@@ -137,44 +152,34 @@ class singInViewController: UIViewController {
                     storageRef = Storage.storage().reference().child("MEMES/\(imageToDownload)")
                     storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
                         if let error = error {
-                            // Uh-oh, an error occurred!
-                            print("-------- hubo un error al descargar \(imageToDownload). el error fue \(error)")
+                            //print("-------- hubo un error al descargar \(imageToDownload). el error fue \(error)")
+                            print("error, sustituyendo imagen")
+                            var imagenSustituto = #imageLiteral(resourceName: "laptop_acer")
+                            imagenesArray.append(imagenSustituto as! UIImage)
                         } else {
                             // Data for "images/island.jpg" is returned
                             let image = UIImage(data: data!)
                             imagenesArray.append(image as! UIImage)
-                            //self.imagenesArray.append(image!)
-                            print("++++++++ la imagen se llama \(imageToDownload)")
                         }
                     }
-                    //print("-------------------nueva imagen: \(imageToDownload) cuenta nueva de  urlsList \(urlsList.count)")
+                    print("nueva imagen: \(imageToDownload) cuenta nueva de urlsList \(urlsList.count)")
                 }
+                
+                
+                self.run(after: 2){
+                    
+                    let layout = PinterestLayout()
+                    let collectionViewC = CollectionViewController(collectionViewLayout: layout)
+                    self.navigationController?.pushViewController(collectionViewC, animated: true)                }
+                
+            } else {
+                self.logInButton.setTitle("algo salio mal", for: .normal)
             }
             
         })
         
         
         
-         /*
-         for currentImage in urlsList {
-         
-         let storageRef = Storage.storage().reference().child("MEMES/\(currentImage)")
-         storageRef.getData(maxSize: 3 * 1024 * 1024) { data, error in
-         if let error = error {
-         // Uh-oh, an error occurred!
-         print("-------- hubo un error al descargar. Fue \(error)")
-         } else {
-         // Data for "images/island.jpg" is returned
-         let image = UIImage(data: data!)
-         self.imagenesArray.append(image as! UIImage)
-         //self.imagenesArray.append(image!)
-         print("++++++++ la imagen se llama \(currentImage)")
-         
-         }
-         }
-         
-         }*/
- 
         
         
         return urlsList.count

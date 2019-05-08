@@ -31,13 +31,11 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         super.viewDidLoad()
         
         
-        //loadPines()
+        imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
+        pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "UploadImage", style: .plain, target: self, action: #selector(uploadNewImage))
         
-        
-        
-        
-        //print("++++ Aqui cargamos viewDIdLoad")
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
@@ -53,12 +51,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return Storage.storage().reference().child("MEMES")
     }
     
-    
-    
-    //let pines = ["Coche", "Pokemon GO", "Consejos", "Galaxia", "Lego car", "Paisaje", "San Agustin", "Laptop"]
-    //let imagenes = [#imageLiteral(resourceName: "auto_2"), #imageLiteral(resourceName: "meme_pokemon"), #imageLiteral(resourceName: "consejos fin de semestre 1"), #imageLiteral(resourceName: "Galaxia-Monstruosa"), #imageLiteral(resourceName: "lego_car"), #imageLiteral(resourceName: "paisaje"), #imageLiteral(resourceName: "san-agustin-de-hipona"), #imageLiteral(resourceName: "laptop_acer")]
-    let imagenes = imagenesArray
-    let pines = messagesArray
+    var imagenes = imagenesArray
+    var pines = messagesArray
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("++++ Aqui cargamos numberOfItems")
@@ -181,7 +175,6 @@ extension CollectionViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
         //print("sacamos height de imagen \(indexPath.item)")
-        print("sacamos height para celda")
         return imagenes[indexPath.item].size.height
     }
     

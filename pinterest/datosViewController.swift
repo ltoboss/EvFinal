@@ -141,8 +141,10 @@ class datosViewController: UIViewController, UITextFieldDelegate{
                     //self.navigationController?.pushViewController(collectionViewC, animated: true)
                 
                     let layout = PinterestLayout()
-                    let collectionViewC = CollectionViewController(collectionViewLayout: layout)
-                    self.navigationController?.pushViewController(collectionViewC, animated: true)
+                    //let collectionViewC = CollectionViewController(collectionViewLayout: layout)
+                    //self.navigationController?.pushViewController(collectionViewC, animated: true)
+                    let uploadVC = UploadImageVC()
+                    self.navigationController?.pushViewController(uploadVC, animated: true)
             }//Fin de switch case
             
         }

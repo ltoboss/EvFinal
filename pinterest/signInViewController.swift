@@ -166,7 +166,7 @@ class singInViewController: UIViewController {
                 }
                 
                 
-                self.run(after: 2){
+                self.run(after: 3){
                     
                     let layout = PinterestLayout()
                     let collectionViewC = CollectionViewController(collectionViewLayout: layout)

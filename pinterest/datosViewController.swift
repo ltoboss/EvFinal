@@ -14,10 +14,10 @@ class datosViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         title = "Registrate"
-        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        view.backgroundColor = UIColor(r: 0, g: 0, b: 0)
         let padding1:CGFloat = 10
         label1.text = "Favor de poner su \(activeScreen.rawValue)"
-        
+        label1.textColor = .white
         
         //add subview
         self.view.addSubview(label1)
@@ -52,7 +52,7 @@ class datosViewController: UIViewController, UITextFieldDelegate{
     
     lazy var firstButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 219/255, green: 50/255, blue: 54/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 61/255, green: 91/255, blue: 153/255, alpha: 1)
         ub.setTitleColor(.white, for: .normal)
         ub.setTitle("Siguiente", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false

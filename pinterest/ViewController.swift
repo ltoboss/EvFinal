@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     let buttonContainerView : UIView =  {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         return view
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     
     lazy var emailButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 255/255, green: 20/255, blue: 0/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 15/255, green: 156/255, blue: 88/255, alpha: 1)
         ub.setTitle("Continuar con el correo electronico", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
@@ -133,8 +133,8 @@ class ViewController: UIViewController {
     
     lazy var firstButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
-        ub.setTitleColor(.white, for: .normal)
+        ub.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        ub.setTitleColor(.black, for: .normal)
         ub.setTitle("Iniciar sesion", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)

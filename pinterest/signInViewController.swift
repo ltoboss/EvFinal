@@ -15,10 +15,11 @@ class singInViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Inicia sesion"
-        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        view.backgroundColor = UIColor(r: 0, g: 0, b: 0)
         //let padding1:CGFloat = 10
         
         labelInstruction.text = "Ingresa tu password"
+        labelInstruction.textColor = .white
         
         //add subview
         self.view.addSubview(labelInstruction)
@@ -55,7 +56,7 @@ class singInViewController: UIViewController {
     
     lazy var logInButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 219/255, green: 50/255, blue: 54/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 61/255, green: 91/255, blue: 153/255, alpha: 1)
         ub.setTitleColor(.white, for: .normal)
         ub.setTitle("Siguiente", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false

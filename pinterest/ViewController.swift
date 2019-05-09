@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        view.backgroundColor = UIColor(r: 0, g: 0, b: 0)
         //let padding1:CGFloat = 10
         
         let pinterestBackground = #imageLiteral(resourceName: "collageBackground")
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
     
     lazy var facebookButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 61/255, green: 91/255, blue: 153/255, alpha: 1)
         ub.setTitle("Continuar con Facebook", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
@@ -122,7 +122,7 @@ class ViewController: UIViewController {
     
     lazy var googleButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 30/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 213/255, green: 75/255, blue: 61/255, alpha: 1)
         ub.setTitle("Continuar con Google", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         //ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)

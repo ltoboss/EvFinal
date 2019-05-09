@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import AVFoundation
+import Vision
 
 class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -15,10 +17,17 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        view.addSubview(takePictureButton)
         view.addSubview(chooseButton)
         view.addSubview(uploadButton)
         view.addSubview(imageToUpload)
-        view.addSubview(pinMessageTextField)
+    
+        
+        takePictureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        takePictureButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 270).isActive = true
+        takePictureButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        takePictureButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        takePictureButton.addTarget(self, action: "setupCaptureSession:", for: .touchUpInside)
         
         chooseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         chooseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 210).isActive = true
@@ -36,11 +45,57 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         imageToUpload.widthAnchor.constraint(equalToConstant: 300).isActive = true
         imageToUpload.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
-        pinMessageTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        pinMessageTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 250).isActive = true
-        pinMessageTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        pinMessageTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        func setupCaptureSession() {
+            let captureSession = AVCaptureSession()
+            
+            // search for available capture devices
+            let availableDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices
+            
+            // setup capture device, add input to our capture session
+            do {
+                if let captureDevice = availableDevices.first {
+                    let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
+                    captureSession.addInput(captureDeviceInput)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            // setup output, add output to our capture session
+            let captureOutput = AVCaptureVideoDataOutput()
+            captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
+            captureSession.addOutput(captureOutput)
+            
+            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            previewLayer.frame = view.frame
+            view.layer.addSublayer(previewLayer)
+            
+            captureSession.startRunning()
+        }
         
+        // called everytime a frame is captured
+        func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+            guard let model = try? VNCoreMLModel(for: MarsHabitatPricer().model) else {return}
+            
+            let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
+                
+                guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
+                guard let Observation = results.first else { return }
+                
+                DispatchQueue.main.async(execute: {
+                    self.label.text = "\(Observation.identifier)"
+                })
+            }
+            guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+            
+            // executes request
+            try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+        }
+        
+        func setupLabel() {
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        }
     }
     
     let imageToUpload : UIImageView = {
@@ -50,6 +105,14 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         return imageV
     }()
     
+    lazy var takePictureButton : UIButton = {
+        let ub = UIButton()
+        ub.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.setTitle("Tomar imagen", for: .normal)
+        ub.translatesAutoresizingMaskIntoConstraints = false
+        ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
+        return ub
+    }()
     
     lazy var chooseButton : UIButton = {
         let ub = UIButton()
@@ -77,6 +140,15 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         tf.backgroundColor = .white
         tf.text = ""
         return tf
+    }()
+    
+    let label: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Label"
+        label.font = label.font.withSize(30)
+        return label
     }()
     
     

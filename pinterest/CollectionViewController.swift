@@ -40,7 +40,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             layout.delegate = self
         }
         //print("------- setteando controller ------")
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = .black
         collectionView?.register(pinCell.self, forCellWithReuseIdentifier: cellId )
         
         
@@ -89,6 +89,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         
         cell.imageView1.image = imagenes[indexPath.item]
+        cell.backgroundColor = .white
         
         //var storageRef = Storage.storage().reference().child("MEMES/5A70E10D-8500-45C0-8405-31AF2105E644.jpg")
         

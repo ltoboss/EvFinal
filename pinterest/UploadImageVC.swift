@@ -16,7 +16,7 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
+        view.backgroundColor = UIColor(r: 0, g: 0, b: 0)
         view.addSubview(takePictureButton)
         view.addSubview(chooseButton)
         view.addSubview(uploadButton)
@@ -24,13 +24,13 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
         
         takePictureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        takePictureButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 270).isActive = true
+        takePictureButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 240).isActive = true
         takePictureButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         takePictureButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         takePictureButton.addTarget(self, action: "setupCaptureSession:", for: .touchUpInside)
         
         chooseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        chooseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 210).isActive = true
+        chooseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200).isActive = true
         chooseButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         chooseButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
@@ -107,7 +107,7 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     lazy var takePictureButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 213/255, green: 75/255, blue: 61/255, alpha: 1)
         ub.setTitle("Tomar imagen", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
@@ -116,7 +116,7 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     lazy var chooseButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 80/255, green: 101/255, blue: 161/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 15/255, green: 156/255, blue: 88/255, alpha: 1)
         ub.setTitle("Elegir imagen", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         ub.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
@@ -125,7 +125,7 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     lazy var uploadButton : UIButton = {
         let ub = UIButton()
-        ub.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+        ub.backgroundColor = UIColor(red: 61/255, green: 91/255, blue: 153/255, alpha: 1)
         ub.setTitle("Subir imagen", for: .normal)
         ub.translatesAutoresizingMaskIntoConstraints = false
         ub.addTarget(self, action: #selector(uploadImage), for: .touchUpInside)

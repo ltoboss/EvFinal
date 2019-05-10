@@ -16,6 +16,7 @@
 		55AFC85522324F3F003E01FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFC85422324F3F003E01FD /* User.swift */; };
 		55EDD644227C2CB000B3DCFC /* testDownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EDD643227C2CB000B3DCFC /* testDownloadImage.swift */; };
 		BAD9B5B92284271D003511F4 /* MarsHabitatPricer.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BAD9B5B82284271C003511F4 /* MarsHabitatPricer.mlmodel */; };
+		BADB8B692284FB2000634AAD /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BADB8B682284FB2000634AAD /* SqueezeNet.mlmodel */; };
 		F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF53A2232096B009FBCD2 /* AppDelegate.swift */; };
 		F34FF53D2232096B009FBCD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FF53C2232096B009FBCD2 /* ViewController.swift */; };
 		F34FF5402232096B009FBCD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34FF53E2232096B009FBCD2 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		71E65ED5B3EA09CA0C46E3E3 /* Pods_pinterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pinterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F445D124834B72FB421CF /* Pods-pinterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pinterest.debug.xcconfig"; path = "Target Support Files/Pods-pinterest/Pods-pinterest.debug.xcconfig"; sourceTree = "<group>"; };
 		BAD9B5B82284271C003511F4 /* MarsHabitatPricer.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MarsHabitatPricer.mlmodel; sourceTree = "<group>"; };
+		BADB8B682284FB2000634AAD /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		F34FF5372232096B009FBCD2 /* pinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pinterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34FF53A2232096B009FBCD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F34FF53C2232096B009FBCD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		F34FF5392232096B009FBCD2 /* pinterest */ = {
 			isa = PBXGroup;
 			children = (
+				BADB8B682284FB2000634AAD /* SqueezeNet.mlmodel */,
 				BAD9B5B82284271C003511F4 /* MarsHabitatPricer.mlmodel */,
 				F3694FB12256D78A00757C7D /* TableViewSample.swift */,
 				F34FF53A2232096B009FBCD2 /* AppDelegate.swift */,
@@ -370,6 +373,7 @@
 				55AFC85522324F3F003E01FD /* User.swift in Sources */,
 				55EDD644227C2CB000B3DCFC /* testDownloadImage.swift in Sources */,
 				F3694FB02256D46E00757C7D /* pinCell.swift in Sources */,
+				BADB8B692284FB2000634AAD /* SqueezeNet.mlmodel in Sources */,
 				F34FF53D2232096B009FBCD2 /* ViewController.swift in Sources */,
 				F34FF53B2232096B009FBCD2 /* AppDelegate.swift in Sources */,
 				552DFA4B2254977D008D07C8 /* CollectionViewController.swift in Sources */,

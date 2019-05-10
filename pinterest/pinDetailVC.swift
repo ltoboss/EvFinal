@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Vision
 
 class pinDetailVC : UIViewController {
     
@@ -53,6 +54,8 @@ class pinDetailVC : UIViewController {
         pinTitle.widthAnchor.constraint(equalTo: pinImage.widthAnchor, multiplier: 7/10).isActive = true
         pinTitle.heightAnchor.constraint(equalToConstant: 20).isActive = true
         //pinTitle.backgroundColor = .green
+        showDescriptor()
+        
     }
     
     //****************** VARIABLES *********************
@@ -86,5 +89,20 @@ class pinDetailVC : UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    func showDescriptor(){
+        guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else {return}
+        let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
+            
+            guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
+            guard let Observation = results.first else { return }
+            print(Observation.identifier)
+            DispatchQueue.main.async(execute: {
+                self.pinTitle.text = "\(Observation.identifier)"
+            })
+        }
+        if let cgImage = pinImage.image?.cgImage{
+            try? VNImageRequestHandler(cgImage: cgImage , options: [ : ]).perform([request])
+        }
+    }
     
 }

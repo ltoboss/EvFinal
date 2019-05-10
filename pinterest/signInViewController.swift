@@ -50,7 +50,7 @@ class singInViewController: UIViewController {
         tf.isSecureTextEntry = true
         tf.backgroundColor = .white
         
-        //tf.text = "usuario55"
+        tf.text = "usuario55"
         return tf
     }()
     

@@ -1,12 +1,4 @@
 
-//
-//  AppDelegate.swift
-//  pinterest
-//
-//  Created by Alumno IDS on 3/7/19.
-//  Copyright © 2019 Alumno IDS. All rights reserved.
-//
-
 import UIKit
 import Firebase
 

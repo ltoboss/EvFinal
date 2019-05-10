@@ -27,7 +27,7 @@ class testDownloadImage: UIViewController {
         let pinterestBackground = #imageLiteral(resourceName: "collageBackground")
         let backgroundView = UIImageView()
         backgroundView.frame = CGRect(x: 0, y:40, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.75)
-        print("-------------------primero")
+        print("-------------------prmero")
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in

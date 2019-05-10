@@ -75,7 +75,7 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
         // called everytime a frame is captured
         func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-            guard let model = try? VNCoreMLModel(for: MarsHabitatPricer().model) else {return}
+            guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else {return}
             
             let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
                 
@@ -282,9 +282,26 @@ class UploadImageVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         }*/
         if let selectedImage = selectedImageFromPicker {
             imageToUpload.image = selectedImage
+            guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else {return}
+            let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
+                
+                guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
+                guard let Observation = results.first else { return }
+                print(Observation.identifier)
+                DispatchQueue.main.async(execute: {
+                    self.label.text = "\(Observation.identifier)"
+                })
+            }
+            if let cgImage = imageToUpload.image?.cgImage{
+                try? VNImageRequestHandler(cgImage: cgImage , options: [ : ]).perform([request])
+            }
+            
+            
+            
         }
         
         print("imagen seleccionada")
+        print(self.label.text ?? "no")
         //print(info)
         
         dismiss(animated: true, completion: nil)
